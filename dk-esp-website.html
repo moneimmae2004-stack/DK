@@ -1,0 +1,1318 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DK Engineering Fun | مراكز الترفيه العائلية</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0B1F3A;
+    --navy-light: #142847;
+    --gold: #D4A843;
+    --gold-light: #E8C066;
+    --white: #FAFAFA;
+    --gray-light: #F0F4F8;
+    --gray-mid: #B0BEC5;
+    --text-dark: #0B1F3A;
+    --text-mid: #4A5568;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Cairo', 'Montserrat', sans-serif;
+    background: var(--white);
+    color: var(--text-dark);
+    overflow-x: hidden;
+  }
+
+  /* ---- LANGUAGE TOGGLE ---- */
+  #lang-toggle {
+    position: fixed;
+    top: 18px;
+    left: 24px;
+    z-index: 1100;
+    display: flex;
+    gap: 6px;
+    background: rgba(11,31,58,0.85);
+    border-radius: 30px;
+    padding: 4px 6px;
+    backdrop-filter: blur(8px);
+  }
+  #lang-toggle button {
+    background: none;
+    border: none;
+    color: var(--gray-mid);
+    font-size: 13px;
+    font-weight: 600;
+    padding: 5px 14px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-family: 'Cairo', 'Montserrat', sans-serif;
+    transition: all 0.25s;
+    letter-spacing: 0.5px;
+  }
+  #lang-toggle button.active {
+    background: var(--gold);
+    color: var(--navy);
+  }
+
+  /* ---- NAVBAR ---- */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    padding: 0 48px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(11,31,58,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(212,168,67,0.2);
+    transition: background 0.3s;
+  }
+  .nav-logo {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--white);
+    letter-spacing: 1px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .nav-logo span { color: var(--gold); }
+  .logo-icon {
+    width: 36px; height: 36px;
+    background: var(--gold);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px; font-weight: 900; color: var(--navy);
+  }
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+  }
+  .nav-links a {
+    color: rgba(250,250,250,0.8);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: color 0.2s;
+    position: relative;
+    padding-bottom: 4px;
+  }
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--gold);
+    transform: scaleX(0);
+    transition: transform 0.25s;
+    transform-origin: center;
+  }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-links a:hover::after { transform: scaleX(1); }
+  .nav-cta {
+    background: var(--gold);
+    color: var(--navy) !important;
+    padding: 9px 22px;
+    border-radius: 6px;
+    font-weight: 700 !important;
+    transition: background 0.2s, transform 0.2s !important;
+  }
+  .nav-cta:hover { background: var(--gold-light); transform: translateY(-1px); }
+  .nav-cta::after { display: none !important; }
+
+  /* ---- HERO ---- */
+  .hero {
+    min-height: 100vh;
+    background: linear-gradient(135deg, var(--navy) 0%, #1a3a6e 60%, #0d2a50 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    padding: 100px 48px 60px;
+  }
+  .hero-bg-pattern {
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(circle at 20% 50%, rgba(212,168,67,0.08) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(212,168,67,0.06) 0%, transparent 40%);
+    pointer-events: none;
+  }
+  .hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(212,168,67,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(212,168,67,0.05) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+  }
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+    text-align: center;
+  }
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(212,168,67,0.15);
+    border: 1px solid rgba(212,168,67,0.4);
+    color: var(--gold);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 8px 20px;
+    border-radius: 30px;
+    margin-bottom: 30px;
+  }
+  .hero-eyebrow::before { content: '●'; font-size: 8px; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+  .hero h1 {
+    font-size: clamp(36px, 6vw, 72px);
+    font-weight: 900;
+    color: var(--white);
+    line-height: 1.1;
+    margin-bottom: 14px;
+    letter-spacing: -1px;
+  }
+  .hero h1 .gold { color: var(--gold); }
+  .hero-subtitle {
+    font-size: clamp(15px, 2vw, 20px);
+    color: rgba(250,250,250,0.7);
+    max-width: 600px;
+    margin: 0 auto 40px;
+    line-height: 1.7;
+    font-weight: 400;
+  }
+  .hero-actions {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 60px;
+  }
+  .btn-primary {
+    background: var(--gold);
+    color: var(--navy);
+    padding: 15px 36px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 15px;
+    text-decoration: none;
+    transition: all 0.25s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 4px 24px rgba(212,168,67,0.3);
+  }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 8px 32px rgba(212,168,67,0.4); }
+  .btn-secondary {
+    background: transparent;
+    color: var(--white);
+    padding: 15px 36px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 15px;
+    text-decoration: none;
+    border: 1.5px solid rgba(250,250,250,0.3);
+    transition: all 0.25s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .btn-secondary:hover { border-color: var(--gold); color: var(--gold); }
+  .hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 48px;
+    padding: 28px 40px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(212,168,67,0.2);
+    border-radius: 16px;
+    backdrop-filter: blur(10px);
+    flex-wrap: wrap;
+  }
+  .stat {
+    text-align: center;
+  }
+  .stat-number {
+    font-size: 36px;
+    font-weight: 900;
+    color: var(--gold);
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 12px;
+    color: rgba(250,250,250,0.6);
+    margin-top: 4px;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+  }
+
+  /* ---- SECTIONS ---- */
+  section { padding: 96px 48px; }
+  .section-eyebrow {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-eyebrow::after {
+    content: '';
+    flex: 1;
+    max-width: 40px;
+    height: 2px;
+    background: var(--gold);
+    border-radius: 2px;
+  }
+  .section-title {
+    font-size: clamp(28px, 4vw, 44px);
+    font-weight: 800;
+    color: var(--navy);
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+  .section-desc {
+    font-size: 16px;
+    color: var(--text-mid);
+    line-height: 1.8;
+    max-width: 560px;
+  }
+  .container { max-width: 1200px; margin: 0 auto; }
+
+  /* ---- SERVICES ---- */
+  .services { background: var(--gray-light); }
+  .services-header { margin-bottom: 56px; }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+  }
+  .service-card {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 36px 28px;
+    border: 1px solid rgba(11,31,58,0.08);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+  }
+  .service-card::before {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 4px;
+    background: var(--gold);
+    transform: scaleX(0);
+    transition: transform 0.3s;
+    transform-origin: left;
+  }
+  .service-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 48px rgba(11,31,58,0.12);
+    border-color: rgba(212,168,67,0.3);
+  }
+  .service-card:hover::before { transform: scaleX(1); }
+  .service-icon {
+    width: 60px; height: 60px;
+    background: rgba(212,168,67,0.1);
+    border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 28px;
+    margin-bottom: 22px;
+    transition: background 0.3s;
+  }
+  .service-card:hover .service-icon { background: rgba(212,168,67,0.2); }
+  .service-card h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 10px;
+  }
+  .service-card p {
+    font-size: 14px;
+    color: var(--text-mid);
+    line-height: 1.7;
+  }
+  .service-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 18px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--gold);
+    text-decoration: none;
+    letter-spacing: 0.3px;
+  }
+
+  /* ---- WHY CHOOSE US ---- */
+  .why-us { background: var(--white); }
+  .why-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+  .why-features { display: flex; flex-direction: column; gap: 28px; }
+  .why-feature {
+    display: flex;
+    gap: 18px;
+    align-items: flex-start;
+    padding: 24px;
+    border-radius: 12px;
+    border: 1px solid transparent;
+    transition: all 0.25s;
+  }
+  .why-feature:hover {
+    background: var(--gray-light);
+    border-color: rgba(212,168,67,0.2);
+  }
+  .why-feature-icon {
+    width: 48px; height: 48px;
+    background: var(--navy);
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px;
+    flex-shrink: 0;
+  }
+  .why-feature-text h4 {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 6px;
+  }
+  .why-feature-text p {
+    font-size: 14px;
+    color: var(--text-mid);
+    line-height: 1.7;
+  }
+  .why-visual {
+    background: linear-gradient(135deg, var(--navy) 0%, #1a3a6e 100%);
+    border-radius: 24px;
+    padding: 48px 40px;
+    color: var(--white);
+    position: relative;
+    overflow: hidden;
+  }
+  .why-visual::before {
+    content: '';
+    position: absolute;
+    top: -40px; right: -40px;
+    width: 200px; height: 200px;
+    background: rgba(212,168,67,0.08);
+    border-radius: 50%;
+  }
+  .why-visual h3 {
+    font-size: 24px;
+    font-weight: 800;
+    margin-bottom: 20px;
+    position: relative;
+  }
+  .why-visual p {
+    font-size: 15px;
+    opacity: 0.8;
+    line-height: 1.8;
+    margin-bottom: 28px;
+    position: relative;
+  }
+  .why-big-num {
+    font-size: 80px;
+    font-weight: 900;
+    color: var(--gold);
+    line-height: 1;
+    position: relative;
+  }
+  .why-big-label {
+    font-size: 16px;
+    opacity: 0.7;
+    margin-top: 4px;
+  }
+
+  /* ---- ABOUT ---- */
+  .about { background: var(--gray-light); }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+  .about-text .section-desc { max-width: 100%; }
+  .about-vision {
+    margin-top: 28px;
+    padding: 24px;
+    background: var(--white);
+    border-radius: 14px;
+    border-right: 4px solid var(--gold);
+  }
+  [lang="en"] .about-vision { border-right: none; border-left: 4px solid var(--gold); }
+  .about-vision h4 {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 10px;
+  }
+  .about-vision p {
+    font-size: 14px;
+    color: var(--text-mid);
+    line-height: 1.7;
+  }
+  .about-image-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .about-img-placeholder {
+    border-radius: 12px;
+    overflow: hidden;
+    aspect-ratio: 4/3;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 32px;
+    background: linear-gradient(135deg, var(--navy) 0%, #1a3a6e 100%);
+    color: var(--gold);
+    font-weight: 800;
+    position: relative;
+  }
+  .about-img-placeholder:first-child {
+    grid-column: 1 / -1;
+    aspect-ratio: 16/7;
+    font-size: 40px;
+  }
+  .img-label {
+    position: absolute;
+    bottom: 14px;
+    left: 16px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
+  }
+
+  /* ---- MISSING SECTIONS ---- */
+  .projects { background: var(--navy); padding: 96px 48px; }
+  .projects .section-title { color: var(--white); }
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+    margin-top: 48px;
+  }
+  .project-card {
+    border-radius: 16px;
+    overflow: hidden;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(212,168,67,0.2);
+    transition: all 0.3s;
+    cursor: pointer;
+  }
+  .project-card:hover {
+    border-color: var(--gold);
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px rgba(0,0,0,0.3);
+  }
+  .project-img {
+    height: 180px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 48px;
+    background: rgba(255,255,255,0.04);
+  }
+  .project-info { padding: 22px; }
+  .project-tag {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+  .project-info h3 {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+  .project-info p {
+    font-size: 13px;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.6;
+  }
+
+  /* ---- TESTIMONIALS (NEW SECTION) ---- */
+  .testimonials { background: var(--white); }
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin-top: 48px;
+  }
+  .testimonial-card {
+    background: var(--gray-light);
+    border-radius: 16px;
+    padding: 30px;
+    border: 1px solid rgba(11,31,58,0.07);
+    position: relative;
+  }
+  .testimonial-card::before {
+    content: '"';
+    position: absolute;
+    top: 16px; right: 22px;
+    font-size: 60px;
+    font-weight: 900;
+    color: var(--gold);
+    opacity: 0.3;
+    line-height: 1;
+    font-family: Georgia, serif;
+  }
+  [lang="en"] .testimonial-card::before { right: auto; left: 22px; }
+  .testimonial-text {
+    font-size: 14px;
+    color: var(--text-mid);
+    line-height: 1.8;
+    margin-bottom: 20px;
+  }
+  .testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .author-avatar {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    background: var(--navy);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px;
+    color: var(--gold);
+    font-weight: 800;
+    flex-shrink: 0;
+  }
+  .author-name {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--navy);
+  }
+  .author-title {
+    font-size: 12px;
+    color: var(--text-mid);
+  }
+  .stars { color: var(--gold); font-size: 12px; margin-bottom: 12px; }
+
+  /* ---- CONTACT ---- */
+  .contact { background: var(--gray-light); }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 56px;
+    align-items: start;
+  }
+  .contact-info h3 {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 24px;
+  }
+  .contact-items { display: flex; flex-direction: column; gap: 18px; }
+  .contact-item {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+  .contact-item-icon {
+    width: 42px; height: 42px;
+    background: var(--navy);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+  .contact-item-text { font-size: 14px; color: var(--text-mid); line-height: 1.6; }
+  .contact-item-text strong { color: var(--navy); display: block; margin-bottom: 2px; font-size: 13px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; }
+  .contact-form { background: var(--white); border-radius: 20px; padding: 40px; box-shadow: 0 4px 24px rgba(11,31,58,0.06); }
+  .contact-form h3 { font-size: 20px; font-weight: 700; color: var(--navy); margin-bottom: 28px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .form-group { margin-bottom: 18px; }
+  .form-group label {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--navy);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-bottom: 7px;
+  }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1.5px solid rgba(11,31,58,0.12);
+    border-radius: 9px;
+    font-size: 14px;
+    font-family: 'Cairo', 'Montserrat', sans-serif;
+    color: var(--navy);
+    background: var(--gray-light);
+    transition: border-color 0.2s;
+    outline: none;
+    resize: vertical;
+  }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus { border-color: var(--gold); background: var(--white); }
+  .form-submit {
+    width: 100%;
+    background: var(--navy);
+    color: var(--white);
+    border: none;
+    padding: 15px;
+    border-radius: 9px;
+    font-size: 15px;
+    font-weight: 700;
+    font-family: 'Cairo', 'Montserrat', sans-serif;
+    cursor: pointer;
+    transition: all 0.25s;
+    letter-spacing: 0.3px;
+  }
+  .form-submit:hover { background: var(--gold); color: var(--navy); }
+
+  /* ---- FOOTER ---- */
+  footer {
+    background: var(--navy);
+    padding: 60px 48px 32px;
+    color: rgba(250,250,250,0.6);
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1.5fr;
+    gap: 48px;
+    margin-bottom: 48px;
+  }
+  .footer-brand h3 { font-size: 20px; font-weight: 800; color: var(--white); margin-bottom: 12px; }
+  .footer-brand h3 span { color: var(--gold); }
+  .footer-brand p { font-size: 14px; line-height: 1.7; margin-bottom: 24px; }
+  .social-links { display: flex; gap: 10px; }
+  .social-link {
+    width: 38px; height: 38px;
+    background: rgba(255,255,255,0.07);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    text-decoration: none;
+    font-size: 16px;
+    color: rgba(255,255,255,0.6);
+    transition: all 0.2s;
+  }
+  .social-link:hover { background: var(--gold); color: var(--navy); }
+  .footer-col h4 { font-size: 13px; font-weight: 700; color: var(--white); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 18px; }
+  .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .footer-links a { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 14px; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--gold); }
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding-top: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .footer-bottom a { color: var(--gold); text-decoration: none; }
+
+  /* ---- GOLD DIVIDER ---- */
+  .gold-divider {
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin: 0;
+  }
+
+  /* ---- MISSING BADGE ---- */
+  .missing-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(212,168,67,0.15);
+    border: 1px dashed var(--gold);
+    color: var(--gold);
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-bottom: 12px;
+  }
+  .missing-note {
+    background: rgba(212,168,67,0.07);
+    border: 1px dashed rgba(212,168,67,0.4);
+    border-radius: 10px;
+    padding: 14px 18px;
+    font-size: 13px;
+    color: var(--text-mid);
+    margin-top: 10px;
+  }
+
+  /* ---- RTL / LTR ---- */
+  html[dir="ltr"] body { font-family: 'Montserrat', 'Cairo', sans-serif; }
+  html[dir="ltr"] #lang-toggle { left: auto; right: 24px; }
+  html[dir="ltr"] .section-eyebrow::after { margin-left: 0; }
+  html[dir="ltr"] .about-img-placeholder .img-label { left: auto; right: 16px; }
+  html[dir="ltr"] .testimonial-card::before { right: auto; left: 22px; }
+  html[dir="ltr"] .nav-logo { flex-direction: row-reverse; }
+
+  /* ---- RESPONSIVE ---- */
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    section { padding: 64px 20px; }
+    .hero { padding: 100px 24px 60px; }
+    .hero-stats { gap: 28px; padding: 20px 24px; }
+    .why-grid, .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 36px; }
+    .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+    .form-row { grid-template-columns: 1fr; }
+    .projects { padding: 64px 20px; }
+    footer { padding: 48px 20px 24px; }
+  }
+
+  /* ---- SCROLL ANIMATION ---- */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+</head>
+<body>
+
+<!-- LANGUAGE TOGGLE -->
+<div id="lang-toggle">
+  <button class="active" onclick="setLang('ar')" id="btn-ar">عربي</button>
+  <button onclick="setLang('en')" id="btn-en">EN</button>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="logo-icon">DK</div>
+    <span>DK <span>Engineering</span> Fun</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#services" data-ar="الخدمات" data-en="Services">الخدمات</a></li>
+    <li><a href="#why-us" data-ar="لماذا نحن" data-en="Why Us">لماذا نحن</a></li>
+    <li><a href="#about" data-ar="عن الشركة" data-en="About">عن الشركة</a></li>
+    <li><a href="#projects" data-ar="مشاريعنا" data-en="Projects">مشاريعنا</a></li>
+    <li><a href="#contact" class="nav-cta" data-ar="تواصل معنا" data-en="Contact Us">تواصل معنا</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg-pattern"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow" data-ar="مراكز الترفيه العائلية • المملكة العربية السعودية" data-en="Family Entertainment Centers • Saudi Arabia">
+      مراكز الترفيه العائلية • المملكة العربية السعودية
+    </div>
+    <h1 data-ar='حيث تبدأ <span class="gold">البهجة</span>' data-en='Where <span class="gold">Joy</span> Begins'>
+      حيث تبدأ <span class="gold">البهجة</span>
+    </h1>
+    <p class="hero-subtitle" data-ar="ابدأ مركز ترفيهك العائلي مع DK — تصميم، إنشاء، توريد معدات، تركيب، وخدمات ما بعد البيع — كل شيء في مكان واحد" data-en="Start your Family Entertainment Center with DK — Design, Build, Supply Equipment, Installation, and After-Sales Services all in one stop.">
+      ابدأ مركز ترفيهك العائلي مع DK — تصميم، إنشاء، توريد معدات، تركيب، وخدمات ما بعد البيع — كل شيء في مكان واحد
+    </p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary" data-ar="ابدأ مشروعك الآن ←" data-en="Start Your Project →">ابدأ مشروعك الآن ←</a>
+      <a href="#services" class="btn-secondary" data-ar="تعرف على خدماتنا" data-en="Explore Our Services">تعرف على خدماتنا</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-number">15+</div>
+        <div class="stat-label" data-ar="سنة خبرة" data-en="Years Experience">سنة خبرة</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">50+</div>
+        <div class="stat-label" data-ar="مشروع منجز" data-en="Completed Projects">مشروع منجز</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">100%</div>
+        <div class="stat-label" data-ar="رضا العملاء" data-en="Client Satisfaction">رضا العملاء</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">24/7</div>
+        <div class="stat-label" data-ar="دعم ما بعد البيع" data-en="After-Sales Support">دعم ما بعد البيع</div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="gold-divider"></div>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="container">
+    <div class="services-header fade-up">
+      <div class="section-eyebrow" data-ar="ما نقدمه" data-en="What We Offer">ما نقدمه</div>
+      <h2 class="section-title" data-ar="خدماتنا المتكاملة" data-en="Our Integrated Services">خدماتنا المتكاملة</h2>
+      <p class="section-desc" data-ar="من الفكرة إلى الافتتاح، نوفر كل ما تحتاجه لإنشاء مركز ترفيهي ناجح يجذب العائلات ويحقق عوائد استثمارية مميزة" data-en="From concept to opening day, we provide everything you need to build a successful entertainment center that attracts families and delivers outstanding returns.">
+        من الفكرة إلى الافتتاح، نوفر كل ما تحتاجه لإنشاء مركز ترفيهي ناجح يجذب العائلات ويحقق عوائد استثمارية مميزة
+      </p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card fade-up">
+        <div class="service-icon">🏗️</div>
+        <h3 data-ar="التصميم والإنشاء" data-en="Design & Build">التصميم والإنشاء</h3>
+        <p data-ar="نصمم مخططات مخصصة لمراكز الترفيه العائلية بأعلى المعايير، مع التركيز على تعظيم المتعة وخلق أجواء جذابة لا تُنسى" data-en="We craft custom layouts for family entertainment centers to the highest standards, maximizing fun and creating unforgettable atmospheres.">
+          نصمم مخططات مخصصة لمراكز الترفيه العائلية بأعلى المعايير، مع التركيز على تعظيم المتعة وخلق أجواء جذابة لا تُنسى
+        </p>
+        <a href="#contact" class="service-link" data-ar="اطلب استشارة ←" data-en="Request Consultation →">اطلب استشارة ←</a>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon">🎳</div>
+        <h3 data-ar="ممرات البولينغ" data-en="Bowling Alley">ممرات البولينغ</h3>
+        <p data-ar="توريد وتركيب ممرات البولينغ الاحترافية بأحدث الأنظمة والمعدات، مناسبة لجميع أحجام المراكز الترفيهية" data-en="Supply and installation of professional bowling alleys with the latest systems and equipment, suitable for all entertainment center sizes.">
+          توريد وتركيب ممرات البولينغ الاحترافية بأحدث الأنظمة والمعدات، مناسبة لجميع أحجام المراكز الترفيهية
+        </p>
+        <a href="#contact" class="service-link" data-ar="اعرف أكثر ←" data-en="Learn More →">اعرف أكثر ←</a>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon">🕹️</div>
+        <h3 data-ar="ألعاب الأركيد" data-en="Arcade Games">ألعاب الأركيد</h3>
+        <p data-ar="مجموعة واسعة من أحدث ألعاب الأركيد والألعاب الترفيهية للأطفال والكبار، بأسعار تنافسية وجودة عالية" data-en="A wide selection of the latest arcade and entertainment games for children and adults, at competitive prices and top quality.">
+          مجموعة واسعة من أحدث ألعاب الأركيد والألعاب الترفيهية للأطفال والكبار، بأسعار تنافسية وجودة عالية
+        </p>
+        <a href="#contact" class="service-link" data-ar="تصفح الكتالوج ←" data-en="Browse Catalog →">تصفح الكتالوج ←</a>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon">🔧</div>
+        <h3 data-ar="خدمات ما بعد البيع وقطع الغيار" data-en="After-Sales Support & Spare Parts">خدمات ما بعد البيع وقطع الغيار</h3>
+        <p data-ar="نضمن استمرار تشغيل مركزك بكفاءة عالية من خلال خدمات الصيانة الشاملة وتوفير قطع الغيار الأصلية في أسرع وقت" data-en="We ensure your center operates at peak efficiency through comprehensive maintenance services and rapid supply of genuine spare parts.">
+          نضمن استمرار تشغيل مركزك بكفاءة عالية من خلال خدمات الصيانة الشاملة وتوفير قطع الغيار الأصلية في أسرع وقت
+        </p>
+        <a href="#contact" class="service-link" data-ar="طلب صيانة ←" data-en="Request Maintenance →">طلب صيانة ←</a>
+      </div>
+      <!-- NEW SERVICES -->
+      <div class="service-card fade-up">
+        <div class="service-icon">🎯</div>
+        <div class="missing-badge">✦ <span data-ar="مقترح إضافي" data-en="Suggested Addition">مقترح إضافي</span></div>
+        <h3 data-ar="تجارب VR والواقع الافتراضي" data-en="VR & Virtual Reality Experiences">تجارب VR والواقع الافتراضي</h3>
+        <p data-ar="إضافة أجهزة الواقع الافتراضي والألعاب التفاعلية الحديثة لرفع مستوى التجربة الترفيهية وجذب الجيل الجديد من الزوار" data-en="Adding virtual reality devices and modern interactive games to elevate entertainment and attract the next generation of visitors.">
+          إضافة أجهزة الواقع الافتراضي والألعاب التفاعلية الحديثة لرفع مستوى التجربة الترفيهية وجذب الجيل الجديد من الزوار
+        </p>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon">📊</div>
+        <div class="missing-badge">✦ <span data-ar="مقترح إضافي" data-en="Suggested Addition">مقترح إضافي</span></div>
+        <h3 data-ar="استشارات الجدوى الاقتصادية" data-en="Feasibility Consulting">استشارات الجدوى الاقتصادية</h3>
+        <p data-ar="ندرس سوقك المحلي ونقدم دراسات جدوى دقيقة تساعدك على اتخاذ القرار الاستثماري الصحيح منذ البداية" data-en="We study your local market and provide detailed feasibility studies to help you make the right investment decision from day one.">
+          ندرس سوقك المحلي ونقدم دراسات جدوى دقيقة تساعدك على اتخاذ القرار الاستثماري الصحيح منذ البداية
+        </p>
+      </div>
+    </div>
+    <div class="missing-note fade-up" style="margin-top:24px;">
+      <strong>💡 <span data-ar="ملاحظة تحسين الموقع:" data-en="Website Improvement Note:">ملاحظة تحسين الموقع:</span></strong>
+      <span data-ar=" الموقع الأصلي يفتقر إلى: صفحة مشاريع منجزة بالصور، قسم آراء العملاء، عرض أسعار تقريبي، كتالوج منتجات قابل للتحميل، وخريطة تفاعلية للموقع." data-en=" The original site is missing: a portfolio section with project photos, client testimonials, approximate pricing, a downloadable product catalog, and an interactive location map.">
+        الموقع الأصلي يفتقر إلى: صفحة مشاريع منجزة بالصور، قسم آراء العملاء، عرض أسعار تقريبي، كتالوج منتجات قابل للتحميل، وخريطة تفاعلية للموقع.
+      </span>
+    </div>
+  </div>
+</section>
+
+<!-- WHY CHOOSE US -->
+<section class="why-us" id="why-us">
+  <div class="container">
+    <div class="why-grid">
+      <div class="fade-up">
+        <div class="section-eyebrow" data-ar="ميزتنا التنافسية" data-en="Our Edge">ميزتنا التنافسية</div>
+        <h2 class="section-title" data-ar="لماذا تختار DK؟" data-en="Why Choose DK?">لماذا تختار DK؟</h2>
+        <div class="why-features">
+          <div class="why-feature">
+            <div class="why-feature-icon">⭐</div>
+            <div class="why-feature-text">
+              <h4 data-ar="معدات عالية الجودة" data-en="Premium Equipment">معدات عالية الجودة</h4>
+              <p data-ar="التزامنا بالجودة يضمن أن كل قطعة معدات، من ممرات البولينغ إلى ألعاب الأركيد، هي الأفضل في فئتها لتجربة آمنة وممتعة" data-en="Our commitment to quality ensures every piece of equipment, from bowling alleys to arcade games, is top-notch for a safe and enjoyable experience.">
+                التزامنا بالجودة يضمن أن كل قطعة معدات، من ممرات البولينغ إلى ألعاب الأركيد، هي الأفضل في فئتها لتجربة آمنة وممتعة
+              </p>
+            </div>
+          </div>
+          <div class="why-feature">
+            <div class="why-feature-icon">✏️</div>
+            <div class="why-feature-text">
+              <h4 data-ar="تصميم احترافي مخصص" data-en="Expert Custom Design">تصميم احترافي مخصص</h4>
+              <p data-ar="فريقنا المتخصص يمتلك أكثر من 15 عامًا من الخبرة في تصميم مخططات مراكز الترفيه المخصصة، مع التركيز على تعظيم الاستخدام والأجواء الجذابة" data-en="Our specialized team has over 15 years in designing custom entertainment center layouts, maximizing fun while creating inviting atmospheres.">
+                فريقنا المتخصص يمتلك أكثر من 15 عامًا من الخبرة في تصميم مخططات مراكز الترفيه المخصصة، مع التركيز على تعظيم الاستخدام والأجواء الجذابة
+              </p>
+            </div>
+          </div>
+          <div class="why-feature">
+            <div class="why-feature-icon">🛡️</div>
+            <div class="why-feature-text">
+              <h4 data-ar="خدمة موثوقة ومستمرة" data-en="Reliable Ongoing Service">خدمة موثوقة ومستمرة</h4>
+              <p data-ar="التزامنا لا يتوقف عند التركيب، فنقدم خدمات ما بعد البيع الشاملة التي تضمن استمرار مركزك في أفضل حالاته دائمًا" data-en="Our commitment extends beyond installation with comprehensive after-sales services guaranteeing your center remains in excellent condition.">
+                التزامنا لا يتوقف عند التركيب، فنقدم خدمات ما بعد البيع الشاملة التي تضمن استمرار مركزك في أفضل حالاته دائمًا
+              </p>
+            </div>
+          </div>
+          <div class="why-feature">
+            <div class="why-feature-icon">🌟</div>
+            <div class="why-feature-text">
+              <h4 data-ar="بناء الهوية والوعي بالعلامة التجارية" data-en="Brand Awareness Building">بناء الهوية والوعي بالعلامة التجارية</h4>
+              <p data-ar="نفهم أهمية الحضور القوي للعلامة التجارية، خبرتنا في خلق تجارب فريدة وغامرة تبني ذكريات عائلية لا تُنسى تجعل عملاءك يعودون" data-en="We understand brand visibility; our expertise in creating unique immersive experiences fosters unforgettable family memories that keep customers coming back.">
+                نفهم أهمية الحضور القوي للعلامة التجارية، خبرتنا في خلق تجارب فريدة وغامرة تبني ذكريات عائلية لا تُنسى تجعل عملاءك يعودون
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="why-visual fade-up">
+        <h3 data-ar="خبرة تمتد لأكثر من" data-en="Over">خبرة تمتد لأكثر من</h3>
+        <div class="why-big-num">15</div>
+        <div class="why-big-label" data-ar="عامًا في قطاع الترفيه العائلي" data-en="Years in the Family Entertainment Sector">عامًا في قطاع الترفيه العائلي</div>
+        <p style="margin-top:24px;" data-ar="نتخصص في تصميم وإنشاء مراكز الترفيه العائلية، ونحن ملتزمون بتجاوز توقعاتك في كل مرحلة من مراحل المشروع." data-en="We specialize in designing and building family entertainment centers, committed to exceeding your expectations at every project stage.">
+          نتخصص في تصميم وإنشاء مراكز الترفيه العائلية، ونحن ملتزمون بتجاوز توقعاتك في كل مرحلة من مراحل المشروع.
+        </p>
+        <a href="#contact" class="btn-primary" style="margin-top:8px;" data-ar="تحدث مع خبرائنا →" data-en="Talk to Our Experts →">تحدث مع خبرائنا →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-image-grid fade-up">
+        <div class="about-img-placeholder">
+          🏟️
+          <div class="img-label" data-ar="مركز ترفيهي متكامل" data-en="Integrated Entertainment Center">مركز ترفيهي متكامل</div>
+        </div>
+        <div class="about-img-placeholder">🎳<div class="img-label" data-ar="ممرات بولينغ" data-en="Bowling Alleys">ممرات بولينغ</div></div>
+        <div class="about-img-placeholder">🕹️<div class="img-label" data-ar="ألعاب أركيد" data-en="Arcade Games">ألعاب أركيد</div></div>
+      </div>
+      <div class="about-text fade-up">
+        <div class="section-eyebrow" data-ar="من نحن" data-en="Who We Are">من نحن</div>
+        <h2 class="section-title" data-ar="عن شركة DK" data-en="About DK">عن شركة DK</h2>
+        <p class="section-desc" data-ar="DK اسم موثوق في قطاع الترفيه، تقدم مراكز ترفيه عائلية استثنائية. بخبرة تتجاوز 15 عامًا، نصمم وننشئ فضاءات ترفيهية تُقدّم المتعة والتفاعل في المقام الأول، وتضمن تجربة لا تُنسى لكل زائر." data-en="DK is a trusted name in the entertainment sector, delivering exceptional family entertainment centers. With over 15 years of expertise, we design and build spaces that prioritize fun and engagement, ensuring a memorable experience for every visitor.">
+          DK اسم موثوق في قطاع الترفيه، تقدم مراكز ترفيه عائلية استثنائية. بخبرة تتجاوز 15 عامًا، نصمم وننشئ فضاءات ترفيهية تُقدّم المتعة والتفاعل في المقام الأول، وتضمن تجربة لا تُنسى لكل زائر.
+        </p>
+        <div class="about-vision">
+          <h4 data-ar="رؤيتنا" data-en="Our Vision">رؤيتنا</h4>
+          <p data-ar="نؤمن بالشراكات الدائمة، مدعومة بخدمات ما بعد البيع الموثوقة، لضمان أن استثمارك يحقق عوائد رائعة. فريقنا ذو الخبرة مكرس لإثراء تجربة الترفيه للعائلات والمجتمعات، مما يعكس شغفنا بالتميز في كل مشروع." data-en="We believe in lasting partnerships, bolstered by reliable after-sales services, ensuring your investment yields great returns. Our experienced team is dedicated to enriching the entertainment experience for families and communities, reflecting our passion for excellence in every project.">
+            نؤمن بالشراكات الدائمة، مدعومة بخدمات ما بعد البيع الموثوقة، لضمان أن استثمارك يحقق عوائد رائعة. فريقنا ذو الخبرة مكرس لإثراء تجربة الترفيه للعائلات والمجتمعات، مما يعكس شغفنا بالتميز في كل مشروع.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS (MISSING FROM ORIGINAL) -->
+<section class="projects" id="projects">
+  <div class="container">
+    <div class="section-eyebrow" style="color:var(--gold-light);" data-ar="أعمالنا" data-en="Our Work">أعمالنا</div>
+    <h2 class="section-title" data-ar="مشاريع منجزة مختارة" data-en="Selected Completed Projects">مشاريع منجزة مختارة</h2>
+    <div class="missing-badge" style="border-color:rgba(212,168,67,0.5); background:rgba(212,168,67,0.1);">
+      ✦ <span data-ar="قسم ناقص في الموقع الأصلي — يُنصح بإضافة صور وتفاصيل مشاريع حقيقية" data-en="Section missing from original site — recommend adding real project photos and details">قسم ناقص في الموقع الأصلي — يُنصح بإضافة صور وتفاصيل مشاريع حقيقية</span>
+    </div>
+    <div class="projects-grid fade-up">
+      <div class="project-card">
+        <div class="project-img">🎳</div>
+        <div class="project-info">
+          <div class="project-tag" data-ar="بولينغ · الرياض" data-en="Bowling · Riyadh">بولينغ · الرياض</div>
+          <h3 data-ar="مركز ABC للترفيه" data-en="ABC Entertainment Center">مركز ABC للترفيه</h3>
+          <p data-ar="12 ممر بولينغ + 40 لعبة أركيد + تصميم متكامل للمساحة" data-en="12 bowling lanes + 40 arcade games + complete space design">12 ممر بولينغ + 40 لعبة أركيد + تصميم متكامل للمساحة</p>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-img">🕹️</div>
+        <div class="project-info">
+          <div class="project-tag" data-ar="أركيد · جدة" data-en="Arcade · Jeddah">أركيد · جدة</div>
+          <h3 data-ar="مجمع XYZ للألعاب" data-en="XYZ Games Complex">مجمع XYZ للألعاب</h3>
+          <p data-ar="80 جهاز أركيد حديث + منطقة VR + نظام إدارة متكامل" data-en="80 modern arcade units + VR zone + integrated management system">80 جهاز أركيد حديث + منطقة VR + نظام إدارة متكامل</p>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-img">🏟️</div>
+        <div class="project-info">
+          <div class="project-tag" data-ar="مركز متكامل · الدمام" data-en="Full Center · Dammam">مركز متكامل · الدمام</div>
+          <h3 data-ar="مدينة الترفيه الشرقية" data-en="Eastern Entertainment City">مدينة الترفيه الشرقية</h3>
+          <p data-ar="تصميم وإنشاء مركز ترفيهي متكامل على مساحة 3000 م²" data-en="Design and build of a 3,000 m² integrated entertainment center">تصميم وإنشاء مركز ترفيهي متكامل على مساحة 3000 م²</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS (MISSING FROM ORIGINAL) -->
+<section class="testimonials" id="testimonials">
+  <div class="container">
+    <div class="section-eyebrow" data-ar="آراء عملائنا" data-en="Client Testimonials">آراء عملائنا</div>
+    <h2 class="section-title" data-ar="ماذا يقول شركاؤنا في النجاح" data-en="What Our Success Partners Say">ماذا يقول شركاؤنا في النجاح</h2>
+    <div class="missing-badge">✦ <span data-ar="قسم ناقص في الموقع الأصلي — يُنصح بإضافة شهادات حقيقية من العملاء" data-en="Section missing from original — recommend adding genuine client testimonials">قسم ناقص في الموقع الأصلي — يُنصح بإضافة شهادات حقيقية من العملاء</span></div>
+    <div class="testimonials-grid fade-up">
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text" data-ar="فريق DK تجاوز توقعاتنا تمامًا. من مرحلة التصميم حتى الافتتاح، كان التعاون احترافيًا والنتائج مذهلة. مركزنا أصبح الوجهة الترفيهية الأولى في المنطقة." data-en="The DK team completely exceeded our expectations. From design to opening, collaboration was professional and results were outstanding. Our center has become the #1 entertainment destination in the region.">
+          فريق DK تجاوز توقعاتنا تمامًا. من مرحلة التصميم حتى الافتتاح، كان التعاون احترافيًا والنتائج مذهلة. مركزنا أصبح الوجهة الترفيهية الأولى في المنطقة.
+        </p>
+        <div class="testimonial-author">
+          <div class="author-avatar">م.أ</div>
+          <div>
+            <div class="author-name" data-ar="م. أحمد الشمراني" data-en="Eng. Ahmed Al-Shamrani">م. أحمد الشمراني</div>
+            <div class="author-title" data-ar="مدير مجمع الترفيه، الرياض" data-en="Entertainment Complex Manager, Riyadh">مدير مجمع الترفيه، الرياض</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text" data-ar="خدمة ما بعد البيع من DK لا مثيل لها. أي عطل يُحل خلال 24 ساعة. هذا ما يجعلهم مختلفين عن غيرهم في السوق." data-en="DK's after-sales service is unmatched. Any issue is resolved within 24 hours. That's what sets them apart in the market.">
+          خدمة ما بعد البيع من DK لا مثيل لها. أي عطل يُحل خلال 24 ساعة. هذا ما يجعلهم مختلفين عن غيرهم في السوق.
+        </p>
+        <div class="testimonial-author">
+          <div class="author-avatar">س.ع</div>
+          <div>
+            <div class="author-name" data-ar="سارة العتيبي" data-en="Sarah Al-Otaibi">سارة العتيبي</div>
+            <div class="author-title" data-ar="صاحبة مركز ترفيهي، جدة" data-en="Entertainment Center Owner, Jeddah">صاحبة مركز ترفيهي، جدة</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text" data-ar="استثمرنا مع DK في إنشاء مركز ترفيهي ضخم وكانت النتيجة مذهلة. الفريق محترف ومتحمس ويقدم أفكارًا إبداعية لم نكن نتوقعها." data-en="We invested with DK in building a large entertainment center and the results were amazing. The team is professional, enthusiastic, and delivers creative ideas we never expected.">
+          استثمرنا مع DK في إنشاء مركز ترفيهي ضخم وكانت النتيجة مذهلة. الفريق محترف ومتحمس ويقدم أفكارًا إبداعية لم نكن نتوقعها.
+        </p>
+        <div class="testimonial-author">
+          <div class="author-avatar">ف.م</div>
+          <div>
+            <div class="author-name" data-ar="فهد المطيري" data-en="Fahad Al-Mutairi">فهد المطيري</div>
+            <div class="author-title" data-ar="مستثمر في قطاع الترفيه، الدمام" data-en="Entertainment Investor, Dammam">مستثمر في قطاع الترفيه، الدمام</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="section-eyebrow" data-ar="ابدأ معنا" data-en="Get Started">ابدأ معنا</div>
+    <h2 class="section-title" data-ar="تواصل مع فريق DK" data-en="Contact DK Team">تواصل مع فريق DK</h2>
+    <div class="contact-grid fade-up">
+      <div class="contact-info">
+        <h3 data-ar="معلومات التواصل" data-en="Contact Information">معلومات التواصل</h3>
+        <div class="contact-items">
+          <div class="contact-item">
+            <div class="contact-item-icon">📞</div>
+            <div class="contact-item-text">
+              <strong data-ar="الهاتف" data-en="Phone">الهاتف</strong>
+              +966 54 555 1836
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">✉️</div>
+            <div class="contact-item-text">
+              <strong data-ar="البريد الإلكتروني" data-en="Email">البريد الإلكتروني</strong>
+              info@dk-sa.com
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">📍</div>
+            <div class="contact-item-text">
+              <strong data-ar="العنوان" data-en="Address">العنوان</strong>
+              <span data-ar="2757 شارع القلم، المنسية، الرياض، المملكة العربية السعودية" data-en="2757 Al Qalam St, Al Munsiyah, Riyadh, Saudi Arabia">2757 شارع القلم، المنسية، الرياض، المملكة العربية السعودية</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">🕐</div>
+            <div class="contact-item-text">
+              <strong data-ar="ساعات العمل" data-en="Working Hours">ساعات العمل</strong>
+              <span data-ar="الأحد – الخميس: 9:00 ص – 6:00 م" data-en="Sunday – Thursday: 9:00 AM – 6:00 PM">الأحد – الخميس: 9:00 ص – 6:00 م</span>
+            </div>
+          </div>
+        </div>
+        <div class="missing-badge" style="margin-top:24px;">
+          ✦ <span data-ar="مقترح: إضافة خريطة Google Maps تفاعلية" data-en="Suggestion: Add interactive Google Maps embed">مقترح: إضافة خريطة Google Maps تفاعلية</span>
+        </div>
+      </div>
+      <div class="contact-form fade-up">
+        <h3 data-ar="أرسل لنا رسالة" data-en="Send Us a Message">أرسل لنا رسالة</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label data-ar="الاسم الكامل" data-en="Full Name">الاسم الكامل</label>
+            <input type="text" placeholder="" data-placeholder-ar="أدخل اسمك" data-placeholder-en="Enter your name">
+          </div>
+          <div class="form-group">
+            <label data-ar="رقم الهاتف" data-en="Phone Number">رقم الهاتف</label>
+            <input type="tel" placeholder="" data-placeholder-ar="05XXXXXXXX" data-placeholder-en="05XXXXXXXX">
+          </div>
+        </div>
+        <div class="form-group">
+          <label data-ar="البريد الإلكتروني" data-en="Email">البريد الإلكتروني</label>
+          <input type="email" placeholder="" data-placeholder-ar="example@email.com" data-placeholder-en="example@email.com">
+        </div>
+        <div class="form-group">
+          <label data-ar="نوع الخدمة المطلوبة" data-en="Required Service">نوع الخدمة المطلوبة</label>
+          <select>
+            <option data-ar="اختر الخدمة..." data-en="Select service...">اختر الخدمة...</option>
+            <option data-ar="تصميم وإنشاء مركز ترفيهي" data-en="Design & Build Entertainment Center">تصميم وإنشاء مركز ترفيهي</option>
+            <option data-ar="ممرات البولينغ" data-en="Bowling Alleys">ممرات البولينغ</option>
+            <option data-ar="ألعاب الأركيد" data-en="Arcade Games">ألعاب الأركيد</option>
+            <option data-ar="خدمات ما بعد البيع" data-en="After-Sales Services">خدمات ما بعد البيع</option>
+            <option data-ar="استشارة مجانية" data-en="Free Consultation">استشارة مجانية</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label data-ar="رسالتك" data-en="Your Message">رسالتك</label>
+          <textarea rows="4" placeholder="" data-placeholder-ar="صف مشروعك أو استفسارك..." data-placeholder-en="Describe your project or inquiry..."></textarea>
+        </div>
+        <button class="form-submit" data-ar="إرسال الرسالة" data-en="Send Message">إرسال الرسالة</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h3>DK <span>Engineering</span> Fun</h3>
+        <p data-ar="وجهتك الأولى لإنشاء مراكز الترفيه العائلية المتكاملة في المملكة العربية السعودية والخليج. خبرة تتجاوز 15 عامًا في خدمتكم." data-en="Your first destination for building integrated family entertainment centers in Saudi Arabia and the Gulf. Over 15 years of expertise at your service.">
+          وجهتك الأولى لإنشاء مراكز الترفيه العائلية المتكاملة في المملكة العربية السعودية والخليج. خبرة تتجاوز 15 عامًا في خدمتكم.
+        </p>
+        <div class="social-links">
+          <a href="https://www.facebook.com" class="social-link" title="Facebook">f</a>
+          <a href="https://www.instagram.com" class="social-link" title="Instagram">📷</a>
+          <a href="https://x.com" class="social-link" title="X">𝕏</a>
+          <a href="https://www.tiktok.com" class="social-link" title="TikTok">♪</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4 data-ar="الخدمات" data-en="Services">الخدمات</h4>
+        <ul class="footer-links">
+          <li><a href="#services" data-ar="التصميم والإنشاء" data-en="Design & Build">التصميم والإنشاء</a></li>
+          <li><a href="#services" data-ar="ممرات البولينغ" data-en="Bowling Alleys">ممرات البولينغ</a></li>
+          <li><a href="#services" data-ar="ألعاب الأركيد" data-en="Arcade Games">ألعاب الأركيد</a></li>
+          <li><a href="#services" data-ar="ما بعد البيع" data-en="After-Sales">ما بعد البيع</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 data-ar="الشركة" data-en="Company">الشركة</h4>
+        <ul class="footer-links">
+          <li><a href="#about" data-ar="عن الشركة" data-en="About Us">عن الشركة</a></li>
+          <li><a href="#projects" data-ar="مشاريعنا" data-en="Our Projects">مشاريعنا</a></li>
+          <li><a href="#testimonials" data-ar="آراء العملاء" data-en="Testimonials">آراء العملاء</a></li>
+          <li><a href="#contact" data-ar="تواصل معنا" data-en="Contact Us">تواصل معنا</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 data-ar="تواصل معنا" data-en="Get In Touch">تواصل معنا</h4>
+        <ul class="footer-links">
+          <li><a href="tel:+966545551836">+966 54 555 1836</a></li>
+          <li><a href="mailto:info@dk-sa.com">info@dk-sa.com</a></li>
+          <li><span data-ar="الرياض، المملكة العربية السعودية" data-en="Riyadh, Saudi Arabia">الرياض، المملكة العربية السعودية</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2025 DK Engineering Fun. <span data-ar="جميع الحقوق محفوظة." data-en="All rights reserved.">جميع الحقوق محفوظة.</span></div>
+      <div><a href="#"><span data-ar="سياسة الخصوصية" data-en="Privacy Policy">سياسة الخصوصية</span></a> · <a href="#"><span data-ar="الشروط والأحكام" data-en="Terms & Conditions">الشروط والأحكام</span></a></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // LANGUAGE SYSTEM
+  let currentLang = 'ar';
+
+  function setLang(lang) {
+    currentLang = lang;
+    const html = document.documentElement;
+
+    if (lang === 'en') {
+      html.setAttribute('lang', 'en');
+      html.setAttribute('dir', 'ltr');
+      document.body.style.fontFamily = "'Montserrat', 'Cairo', sans-serif";
+      document.getElementById('btn-en').classList.add('active');
+      document.getElementById('btn-ar').classList.remove('active');
+    } else {
+      html.setAttribute('lang', 'ar');
+      html.setAttribute('dir', 'rtl');
+      document.body.style.fontFamily = "'Cairo', 'Montserrat', sans-serif";
+      document.getElementById('btn-ar').classList.add('active');
+      document.getElementById('btn-en').classList.remove('active');
+    }
+
+    // Update all elements with data-ar / data-en
+    document.querySelectorAll('[data-ar]').forEach(el => {
+      const val = el.getAttribute('data-' + lang);
+      if (val !== null) {
+        el.innerHTML = val;
+      }
+    });
+
+    // Update placeholders
+    document.querySelectorAll('[data-placeholder-' + lang + ']').forEach(el => {
+      el.placeholder = el.getAttribute('data-placeholder-' + lang);
+    });
+
+    // Fix hero h1 which has HTML
+    const heroH1 = document.querySelector('.hero h1');
+    if (heroH1) {
+      if (lang === 'en') {
+        heroH1.innerHTML = 'Where <span class="gold">Joy</span> Begins';
+      } else {
+        heroH1.innerHTML = 'حيث تبدأ <span class="gold">البهجة</span>';
+      }
+    }
+
+    // Fix select options
+    document.querySelectorAll('select option[data-ar]').forEach(opt => {
+      opt.textContent = opt.getAttribute('data-' + lang);
+    });
+  }
+
+  // Initialize placeholders
+  document.querySelectorAll('[data-placeholder-ar]').forEach(el => {
+    el.placeholder = el.getAttribute('data-placeholder-ar');
+  });
+
+  // SCROLL ANIMATIONS
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) e.target.classList.add('visible');
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // SMOOTH SCROLL
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
+</script>
+</body>
+</html>
