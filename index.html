@@ -693,6 +693,72 @@
   }
   .form-submit:hover { background: var(--gold); color: var(--navy); }
 
+  /* ---- MAP SECTION ---- */
+  .map-section {
+    position: relative;
+    height: 480px;
+    width: 100%;
+    overflow: hidden;
+  }
+  .map-wrapper {
+    width: 100%;
+    height: 100%;
+    filter: grayscale(15%) contrast(1.05);
+  }
+  .map-wrapper iframe { display: block; }
+  .map-overlay-card {
+    position: absolute;
+    top: 32px;
+    right: 32px;
+    background: var(--white);
+    border-radius: 16px;
+    padding: 24px 28px;
+    box-shadow: 0 12px 40px rgba(11,31,58,0.25);
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    max-width: 320px;
+    border-top: 4px solid var(--gold);
+  }
+  html[dir="ltr"] .map-overlay-card { right: auto; left: 32px; }
+  .map-overlay-icon {
+    width: 44px; height: 44px;
+    background: var(--navy);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+  .map-overlay-card h4 {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 6px;
+  }
+  .map-overlay-card p {
+    font-size: 13px;
+    color: var(--text-mid);
+    line-height: 1.6;
+    margin-bottom: 12px;
+  }
+  .map-directions-link {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--gold);
+    text-decoration: none;
+  }
+  @media (max-width: 768px) {
+    .map-section { height: 380px; }
+    .map-overlay-card {
+      top: auto;
+      bottom: 20px;
+      right: 16px;
+      left: 16px;
+      max-width: none;
+    }
+    html[dir="ltr"] .map-overlay-card { left: 16px; }
+  }
+
   /* ---- FOOTER ---- */
   footer {
     background: var(--navy);
@@ -1147,9 +1213,6 @@
             </div>
           </div>
         </div>
-        <div class="missing-badge" style="margin-top:24px;">
-          ✦ <span data-ar="مقترح: إضافة خريطة Google Maps تفاعلية" data-en="Suggestion: Add interactive Google Maps embed">مقترح: إضافة خريطة Google Maps تفاعلية</span>
-        </div>
       </div>
       <div class="contact-form fade-up">
         <h3 data-ar="أرسل لنا رسالة" data-en="Send Us a Message">أرسل لنا رسالة</h3>
@@ -1184,6 +1247,30 @@
         </div>
         <button class="form-submit" data-ar="إرسال الرسالة" data-en="Send Message">إرسال الرسالة</button>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- MAP SECTION -->
+<section class="map-section">
+  <div class="map-wrapper">
+    <iframe
+      src="https://www.google.com/maps?q=2757+Al+Qalam+St,+Al+Munsiyah,+Riyadh,+Saudi+Arabia&output=embed"
+      width="100%"
+      height="100%"
+      style="border:0;"
+      allowfullscreen=""
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+      title="DK Engineering Fun Location">
+    </iframe>
+  </div>
+  <div class="map-overlay-card">
+    <div class="map-overlay-icon">📍</div>
+    <div>
+      <h4 data-ar="موقعنا" data-en="Our Location">موقعنا</h4>
+      <p data-ar="2757 شارع القلم، المنسية، الرياض، المملكة العربية السعودية" data-en="2757 Al Qalam St, Al Munsiyah, Riyadh, Saudi Arabia">2757 شارع القلم، المنسية، الرياض، المملكة العربية السعودية</p>
+      <a href="https://www.google.com/maps/search/?api=1&query=2757+Al+Qalam+St,+Al+Munsiyah,+Riyadh,+Saudi+Arabia" target="_blank" class="map-directions-link" data-ar="احصل على الاتجاهات ←" data-en="Get Directions →">احصل على الاتجاهات ←</a>
     </div>
   </div>
 </section>
