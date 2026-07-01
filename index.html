@@ -518,25 +518,29 @@ footer{background:var(--darker);border-top:1px solid rgba(255,255,255,.06);paddi
       <div class="cdetail"><div class="cicon">&#127760;</div><div><strong data-en="Website" data-ar="الموقع الإلكتروني">Website</strong><span>www.dk-sa.com</span></div></div>
     </div>
     <div class="cform">
-      <div class="frow">
-        <div class="fg"><label data-en="First name" data-ar="الاسم الأول">First name</label><input type="text" placeholder="Ali"/></div>
-        <div class="fg"><label data-en="Last name" data-ar="اسم العائلة">Last name</label><input type="text" placeholder="Al-Rashidi"/></div>
-      </div>
-      <div class="fg"><label data-en="Email" data-ar="البريد الإلكتروني">Email</label><input type="email" placeholder="ali@company.com"/></div>
-      <div class="fg"><label data-en="Phone" data-ar="رقم الهاتف">Phone</label><input type="tel" placeholder="+966 5X XXX XXXX"/></div>
-      <div class="fg">
-        <label data-en="Service interested in" data-ar="الخدمة المطلوبة">Service interested in</label>
-        <select>
-          <option data-en="Bowling center" data-ar="مركز بولينج">Bowling center</option>
-          <option data-en="Arcade &amp; VR" data-ar="ألعاب وواقع افتراضي">Arcade &amp; VR</option>
-          <option data-en="Escape rooms" data-ar="غرف الهروب">Escape rooms</option>
-          <option data-en="Kids play area" data-ar="منطقة ألعاب أطفال">Kids play area</option>
-          <option data-en="Full venue fit-out" data-ar="تجهيز منشأة كاملة">Full venue fit-out</option>
-          <option data-en="Maintenance plan" data-ar="خطة صيانة">Maintenance plan</option>
-        </select>
-      </div>
-      <div class="fg"><label data-en="Tell us about your project" data-ar="أخبرنا عن مشروعك">Tell us about your project</label><textarea data-ph-en="Venue size, location, timeline, budget..." data-ph-ar="مساحة المنشأة، الموقع، الجدول الزمني، الميزانية..." placeholder="Venue size, location, timeline, budget..."></textarea></div>
-      <button class="sbtn" data-en="Send message →" data-ar="← إرسال الرسالة">Send message &#8594;</button>
+      <div id="form-success" style="display:none;background:rgba(0,200,100,.12);border:1px solid rgba(0,200,100,.4);border-radius:10px;padding:1.2rem 1.5rem;margin-bottom:1.5rem;color:#00c864;font-weight:600;" data-en="✅ Message sent successfully! We'll get back to you within one business day." data-ar="✅ تم إرسال رسالتك بنجاح! سنتواصل معك خلال يوم عمل واحد.">✅ Message sent successfully! We'll get back to you within one business day.</div>
+      <div id="form-error" style="display:none;background:rgba(255,60,60,.12);border:1px solid rgba(255,60,60,.4);border-radius:10px;padding:1.2rem 1.5rem;margin-bottom:1.5rem;color:#ff4444;font-weight:600;" data-en="❌ Something went wrong. Please try again or email us directly." data-ar="❌ حدث خطأ. يرجى المحاولة مرة أخرى أو التواصل معنا مباشرة.">❌ Something went wrong. Please try again or email us directly.</div>
+      <form id="contact-form">
+        <div class="frow">
+          <div class="fg"><label data-en="First name" data-ar="الاسم الأول">First name</label><input type="text" name="first_name" placeholder="Ali" required/></div>
+          <div class="fg"><label data-en="Last name" data-ar="اسم العائلة">Last name</label><input type="text" name="last_name" placeholder="Al-Rashidi" required/></div>
+        </div>
+        <div class="fg"><label data-en="Email" data-ar="البريد الإلكتروني">Email</label><input type="email" name="email" placeholder="ali@company.com" required/></div>
+        <div class="fg"><label data-en="Phone" data-ar="رقم الهاتف">Phone</label><input type="tel" name="phone" placeholder="+966 5X XXX XXXX"/></div>
+        <div class="fg">
+          <label data-en="Service interested in" data-ar="الخدمة المطلوبة">Service interested in</label>
+          <select name="service">
+            <option data-en="Bowling center" data-ar="مركز بولينج">Bowling center</option>
+            <option data-en="Arcade &amp; VR" data-ar="ألعاب وواقع افتراضي">Arcade &amp; VR</option>
+            <option data-en="Escape rooms" data-ar="غرف الهروب">Escape rooms</option>
+            <option data-en="Kids play area" data-ar="منطقة ألعاب أطفال">Kids play area</option>
+            <option data-en="Full venue fit-out" data-ar="تجهيز منشأة كاملة">Full venue fit-out</option>
+            <option data-en="Maintenance plan" data-ar="خطة صيانة">Maintenance plan</option>
+          </select>
+        </div>
+        <div class="fg"><label data-en="Tell us about your project" data-ar="أخبرنا عن مشروعك">Tell us about your project</label><textarea name="message" data-ph-en="Venue size, location, timeline, budget..." data-ph-ar="مساحة المنشأة، الموقع، الجدول الزمني، الميزانية..." placeholder="Venue size, location, timeline, budget..."></textarea></div>
+        <button type="submit" class="sbtn" data-en="Send message →" data-ar="← إرسال الرسالة">Send message &#8594;</button>
+      </form>
     </div>
   </div>
 </section>
@@ -600,6 +604,50 @@ function setLang(lang) {
   });
   try { localStorage.setItem('dk_lang', lang); } catch(e) {}
 }
+
+// Formspree form submission
+document.getElementById('contact-form').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  var form = this;
+  var btn = form.querySelector('button[type="submit"]');
+  var successBox = document.getElementById('form-success');
+  var errorBox = document.getElementById('form-error');
+  var isAr = document.documentElement.getAttribute('dir') === 'rtl';
+
+  // Button loading state
+  btn.disabled = true;
+  btn.textContent = isAr ? 'جاري الإرسال...' : 'Sending...';
+  successBox.style.display = 'none';
+  errorBox.style.display = 'none';
+
+  try {
+    var response = await fetch('https://formspree.io/f/mwvdrvkj', {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    });
+
+    if (response.ok) {
+      // Success
+      successBox.textContent = isAr
+        ? '✅ تم إرسال رسالتك بنجاح! سنتواصل معك خلال يوم عمل واحد.'
+        : '✅ Message sent successfully! We\'ll get back to you within one business day.';
+      successBox.style.display = 'block';
+      form.reset();
+      btn.textContent = isAr ? '← إرسال الرسالة' : 'Send message →';
+    } else {
+      throw new Error('Server error');
+    }
+  } catch(err) {
+    errorBox.textContent = isAr
+      ? '❌ حدث خطأ. يرجى المحاولة مرة أخرى أو التواصل معنا مباشرة.'
+      : '❌ Something went wrong. Please try again or email us directly.';
+    errorBox.style.display = 'block';
+    btn.textContent = isAr ? '← إرسال الرسالة' : 'Send message →';
+  }
+
+  btn.disabled = false;
+});
 </script>
 
 </body>
