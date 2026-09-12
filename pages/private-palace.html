@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl" id="htmlRoot">
+<html lang="en" dir="ltr" id="htmlRoot">
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
@@ -77,6 +77,25 @@ html[dir="ltr"] .pricing-table th, html[dir="ltr"] .pricing-table td{text-align:
 </style>
 </head>
 <body>
+
+<!-- News Ticker -->
+<a href="../news.html" style="text-decoration:none;display:block">
+<div class="news-ticker">
+  <div class="ticker-label" data-ar="🔴 أخبار" data-en="🔴 News">🔴 أخبار</div>
+  <div class="ticker-track-wrap">
+    <div class="ticker-track">
+      <span class="ticker-item" data-ar="🏆 DK Entertainment Solutions تشارك في IAAPA Expo Europe 2026 — ExCeL London" data-en="🏆 DK Entertainment Solutions participating in IAAPA Expo Europe 2026 — ExCeL London">🏆 DK Entertainment Solutions تشارك في IAAPA Expo Europe 2026 — ExCeL London</span>
+      <span class="ticker-sep">⬥</span>
+      <span class="ticker-item" data-ar="🏆 DK Entertainment Solutions participating in IAAPA Expo Europe 2026 — ExCeL London" data-en="🏆 DK Entertainment Solutions تشارك في IAAPA Expo Europe 2026 — ExCeL London">🏆 DK Entertainment Solutions participating in IAAPA Expo Europe 2026 — ExCeL London</span>
+      <span class="ticker-sep">⬥</span>
+      <span class="ticker-item" data-ar="🏆 DK Entertainment Solutions تشارك في IAAPA Expo Europe 2026 — ExCeL London" data-en="🏆 DK Entertainment Solutions participating in IAAPA Expo Europe 2026 — ExCeL London">🏆 DK Entertainment Solutions تشارك في IAAPA Expo Europe 2026 — ExCeL London</span>
+      <span class="ticker-sep">⬥</span>
+      <span class="ticker-item" data-ar="🏆 DK Entertainment Solutions participating in IAAPA Expo Europe 2026 — ExCeL London" data-en="🏆 DK Entertainment Solutions تشارك في IAAPA Expo Europe 2026 — ExCeL London">🏆 DK Entertainment Solutions participating in IAAPA Expo Europe 2026 — ExCeL London</span>
+      <span class="ticker-sep">⬥</span>
+    </div>
+  </div>
+</div>
+</a>
 
 <nav>
   <div class="nav-inner">
@@ -281,7 +300,10 @@ function setLang(l){
   document.getElementById('btnEN').classList.toggle('active',l==='en');
   localStorage.setItem('dk_lang',l);
 }
-(function(){const s=localStorage.getItem('dk_lang');if(s&&s!=='ar')setLang(s);})();
+(function(){
+  const saved = localStorage.getItem('dk_lang') || 'en';
+  setLang(saved);
+})();
 </script>
 </body>
 </html>
