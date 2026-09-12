@@ -79,13 +79,41 @@ html[dir="ltr"] .pricing-table th, html[dir="ltr"] .pricing-table td{text-align:
 </head>
 <body>
 
-<nav><a class="nav-logo" href="../index.html">DK<span>.</span></a><ul class="nav-links"><li><a href="../index.html" data-ar="الرئيسية" data-en="Home">الرئيسية</a></li><li><a href="bowling.html" data-ar="البولينج" data-en="Bowling">البولينج</a></li><li><a href="arcade-vr.html" class="active" data-ar="أركيد & VR" data-en="Arcade & VR">أركيد & VR</a></li><li><a href="kids-play.html" data-ar="ألعاب أطفال" data-en="Kids Play">ألعاب أطفال</a></li><li><a href="escape-rooms.html" data-ar="غرف الهروب" data-en="Escape Rooms">غرف الهروب</a></li><li><a href="../news.html" data-ar="الأخبار" data-en="News">الأخبار</a></li><li><a href="../blog/index.html" data-ar="المدونة" data-en="Blog">المدونة</a></li></ul>
-  <div class="nav-right">
-    <div class="lang-btns">
-      <button class="lang-btn active" id="btnAR" onclick="setLang('ar')">ع</button>
-      <button class="lang-btn" id="btnEN" onclick="setLang('en')">EN</button>
+<nav>
+  <div class="nav-inner">
+    <a href="../index.html" style="font-size:1.5rem;font-weight:800;color:var(--white);text-decoration:none;letter-spacing:-.02em">DK<span style="color:var(--gold)">.</span></a>
+    <ul class="nav-links">
+      <li class="nav-dropdown">
+        <a href="../index.html#services" data-en="Services" data-ar="الخدمات">Services ▾</a>
+        <ul class="dropdown-menu">
+          <li><a href="../pages/maintenance.html" data-en="🔧 Maintenance & Spare Parts" data-ar="🔧 الصيانة وقطع الغيار">🔧 الصيانة وقطع الغيار</a></li>
+          <li><a href="../pages/development.html" data-en="🚀 Centre Development" data-ar="🚀 تطوير المراكز">🚀 تطوير المراكز</a></li>
+          <li><a href="../pages/feasibility.html" data-en="📊 Feasibility Study" data-ar="📊 دراسة الجدوى">📊 دراسة الجدوى</a></li>
+          <li><a href="../pages/consulting.html" data-en="💡 Consulting" data-ar="💡 الاستشارات">💡 الاستشارات</a></li>
+        </ul>
+      </li>
+      <li class="nav-dropdown">
+        <a href="../index.html#products" data-en="Products" data-ar="المنتجات">Products ▾</a>
+        <ul class="dropdown-menu">
+          <li><a href="../pages/bowling.html" data-en="🎳 Bowling Centers" data-ar="🎳 مراكز البولينج">🎳 مراكز البولينج</a></li>
+          <li><a href="../pages/arcade-vr.html" data-en="🕹️ Arcade & VR" data-ar="🕹️ أركيد & VR">🕹️ أركيد & VR</a></li>
+          <li><a href="../pages/kids-play.html" data-en="🎠 Kids Play Areas" data-ar="🎠 ألعاب الأطفال">🎠 ألعاب الأطفال</a></li>
+          <li><a href="../pages/escape-rooms.html" data-en="🔐 Escape Rooms" data-ar="🔐 غرف الهروب">🔐 غرف الهروب</a></li>
+          <li><a href="../pages/private-palace.html" data-en="👑 Private Palace" data-ar="👑 برايفت بالاس">👑 برايفت بالاس</a></li>
+        </ul>
+      </li>
+      <li><a href="../index.html#projects" data-en="Projects" data-ar="المشاريع">Projects</a></li>
+      <li><a href="../index.html#about" data-en="About" data-ar="من نحن">About</a></li>
+      <li><a href="../index.html#contact" data-en="Contact" data-ar="تواصل معنا">Contact</a></li>
+      <li><a href="../news.html" data-en="News" data-ar="الأخبار">News</a></li>
+    </ul>
+    <div class="nav-right">
+      <div class="lang-toggle">
+        <button class="lang-btn active" id="btnEN" onclick="setLang('en')">EN</button>
+        <button class="lang-btn" id="btnAR" onclick="setLang('ar')">عربي</button>
+      </div>
+      <a href="../index.html#contact" class="nav-cta" data-en="Book a call" data-ar="احجز مكالمة">Book a call</a>
     </div>
-    <a class="nav-cta" href="../index.html#contact" data-ar="احجز استشارة" data-en="Book Consultation">احجز استشارة</a>
   </div>
 </nav>
 
