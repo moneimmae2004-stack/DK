@@ -283,8 +283,47 @@ footer{background:var(--darker);border-top:1px solid rgba(255,255,255,.06);paddi
       </div>
       <a href="../index.html#contact" class="nav-cta" data-en="Book a call" data-ar="احجز مكالمة">Book a call</a>
     </div>
+  <button class="hamburger" id="hamburgerBtn" onclick="toggleMobileMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-nav" id="mobileNav">
+  <span class="mobile-section-label" data-ar="التنقل" data-en="Navigation">Navigation</span>
+  <a href="../index.html" data-ar="🏠 الرئيسية" data-en="🏠 Home">🏠 Home</a>
+
+  <span class="mobile-section-label" data-ar="الخدمات" data-en="Services">Services</span>
+  <div class="mobile-sub">
+    <a href="../pages/maintenance.html" data-ar="🔧 الصيانة وقطع الغيار" data-en="🔧 Maintenance & Spare Parts">🔧 Maintenance & Spare Parts</a>
+    <a href="../pages/development.html" data-ar="🚀 تطوير المراكز" data-en="🚀 Centre Development">🚀 Centre Development</a>
+    <a href="../pages/feasibility.html" data-ar="📊 دراسة الجدوى" data-en="📊 Feasibility Study">📊 Feasibility Study</a>
+    <a href="../pages/consulting.html" data-ar="💡 الاستشارات" data-en="💡 Consulting">💡 Consulting</a>
+  </div>
+
+  <span class="mobile-section-label" data-ar="المنتجات" data-en="Products">Products</span>
+  <div class="mobile-sub">
+    <a href="../pages/bowling.html" data-ar="🎳 مراكز البولينج" data-en="🎳 Bowling Centers">🎳 Bowling Centers</a>
+    <a href="../pages/arcade-vr.html" data-ar="🕹️ أركيد & VR" data-en="🕹️ Arcade & VR">🕹️ Arcade & VR</a>
+    <a href="../pages/kids-play.html" data-ar="🎠 ألعاب الأطفال" data-en="🎠 Kids Play Areas">🎠 Kids Play Areas</a>
+    <a href="../pages/escape-rooms.html" data-ar="🔐 غرف الهروب" data-en="🔐 Escape Rooms">🔐 Escape Rooms</a>
+    <a href="../pages/private-palace.html" data-ar="👑 برايفت بالاس" data-en="👑 Private Palace">👑 Private Palace</a>
+  </div>
+
+  <a href="../index.html#projects" data-ar="📁 المشاريع" data-en="📁 Projects">📁 Projects</a>
+  <a href="../index.html#about" data-ar="ℹ️ من نحن" data-en="ℹ️ About">ℹ️ About</a>
+  <a href="../index.html#contact" data-ar="📞 تواصل معنا" data-en="📞 Contact">📞 Contact</a>
+  <a href="../news.html" data-ar="📰 الأخبار" data-en="📰 News">📰 News</a>
+
+  <div class="mobile-lang">
+    <button onclick="setLang('ar');closeMobileMenu()" id="mobileBtnAR">عربي</button>
+    <button onclick="setLang('en');closeMobileMenu()" id="mobileBtnEN">EN</button>
+  </div>
+
+  <a href="../index.html#contact" class="mobile-cta" data-ar="📅 احجز مكالمة" data-en="📅 Book a Call">📅 Book a Call</a>
+</div>
+
 
 <div class="breadcrumb">
   <a href="../index.html" data-ar="الرئيسية" data-en="Home">الرئيسية</a> ←
