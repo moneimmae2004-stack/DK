@@ -362,7 +362,60 @@ footer{background:var(--darker);border-top:1px solid rgba(255,255,255,.06);paddi
 .fbottom p{font-size:.82rem;color:var(--muted)}
 .fbottom span{font-size:.82rem;color:rgba(245,166,35,.6)}
 @media(max-width:900px){.services-grid{grid-template-columns:repeat(2,1fr)}.steps{grid-template-columns:repeat(3,1fr)}.contact-inner{grid-template-columns:1fr}.footer-inner{grid-template-columns:1fr 1fr;gap:2rem}}
-@media(max-width:600px){.nav-links{display:none}.services-grid{grid-template-columns:1fr}.steps{grid-template-columns:1fr 1fr}.hero-stats{gap:1.5rem}.frow{grid-template-columns:1fr}.footer-inner{grid-template-columns:1fr}.prime-banner{flex-direction:column;align-items:flex-start}.prime-banner img{width:100%;height:160px}}
+
+.nav-cta{display:none!important}
+.lang-toggle{display:none!important}
+.services-grid{grid-template-columns:1fr}
+.steps{grid-template-columns:1fr}
+.hero-stats{gap:1.5rem;flex-wrap:wrap}
+.frow{grid-template-columns:1fr}
+.footer-inner{grid-template-columns:1fr}
+.prime-banner{flex-direction:column;align-items:flex-start}
+.prime-banner img{width:100%;height:160px}
+}
+.nav-right{display:none!important}
+.prime-banner img{width:100%;height:160px}
+}
+</style>
+<style>
+.mobile-nav{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(5,0,16,.98);z-index:9998;flex-direction:column;padding:90px 1.5rem 2rem;overflow-y:auto;gap:0}
+.mobile-nav.open{display:flex!important}
+.mobile-nav a{color:#fff;text-decoration:none;font-size:1rem;font-weight:600;padding:.85rem 0;border-bottom:1px solid rgba(255,255,255,.07);display:block}
+.mobile-nav a:hover{color:#F5A623}
+.mobile-section-label{font-size:.7rem;font-weight:700;color:#F5A623;text-transform:uppercase;letter-spacing:.1em;margin-top:1rem;margin-bottom:.2rem;display:block}
+.mobile-sub a{padding:.6rem 0 .6rem 1rem!important;font-size:.9rem!important;color:rgba(168,144,208,.85)!important;border-bottom:1px solid rgba(255,255,255,.04)!important}
+.mobile-lang{display:flex;gap:.5rem;margin-top:1rem}
+.mobile-lang button{background:transparent;border:1px solid rgba(245,166,35,.3);color:rgba(255,255,255,.7);padding:.4rem 1rem;border-radius:4px;font-size:.85rem;cursor:pointer;font-weight:600}
+.mobile-lang button.active{background:#F5A623;color:#050010;border-color:#F5A623}
+.mobile-cta{background:#F5A623!important;color:#050010!important;border-radius:8px!important;padding:.9rem 1.5rem!important;text-align:center!important;font-weight:700!important;border-bottom:none!important;margin-top:1rem!important}
+  .nav-cta{display:none!important}
+  .lang-toggle{display:none!important}
+  .hide-mobile{display:none!important}
+}
+</style>
+<style id="mobile-css">
+/* Hamburger - hidden by default */
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:.4rem;background:none;border:none;z-index:200;flex-shrink:0}
+.hamburger span{display:block;width:22px;height:2px;background:#F0EAFF;border-radius:2px;transition:all .3s}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+/* Mobile breakpoint */
+@media only screen and (max-width:768px){
+  .hamburger{display:flex!important}
+  .nav-links{display:none!important}
+  .nav-cta{display:none!important}
+  .hide-mobile{display:none!important}
+  .lang-toggle{display:none!important}
+  .services-grid{grid-template-columns:1fr!important}
+  .steps{grid-template-columns:1fr!important}
+  .hero-stats{gap:1rem!important;flex-wrap:wrap!important}
+  .frow{grid-template-columns:1fr!important}
+  .footer-inner{grid-template-columns:1fr!important}
+  .prime-banner{flex-direction:column!important;align-items:flex-start!important}
+  .prime-banner img{width:100%!important;height:140px!important}
+  .ticker-item{font-size:.7rem!important;padding:0 .8rem!important}
+}
 </style>
 </head>
 <body dir="ltr" id="bodyEl">
@@ -400,49 +453,38 @@ footer{background:var(--darker);border-top:1px solid rgba(255,255,255,.06);paddi
         <button class="lang-btn active" id="btnEN" onclick="setLang('en')">EN</button>
         <button class="lang-btn" id="btnAR" onclick="setLang('ar')">عربي</button>
       </div>
-      <a href="#contact" class="nav-cta" data-en="Book a call" data-ar="احجز مكالمة">Book a call</a>
+      <a href="#contact" class="nav-cta hide-mobile" data-en="Book a call" data-ar="احجز مكالمة">Book a call</a>
+      <button class="hamburger" id="hamburgerBtn" onclick="toggleMobileMenu()" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
-  <button class="hamburger" id="hamburgerBtn" onclick="toggleMobileMenu()" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
   </div>
 </nav>
 
 <!-- Mobile Menu -->
-<div class="mobile-nav" id="mobileNav">
-  <span class="mobile-section-label" data-ar="التنقل" data-en="Navigation">Navigation</span>
-  <a href="index.html" data-ar="🏠 الرئيسية" data-en="🏠 Home">🏠 Home</a>
-
-  <span class="mobile-section-label" data-ar="الخدمات" data-en="Services">Services</span>
-  <div class="mobile-sub">
-    <a href="pages/maintenance.html" data-ar="🔧 الصيانة وقطع الغيار" data-en="🔧 Maintenance & Spare Parts">🔧 Maintenance & Spare Parts</a>
-    <a href="pages/development.html" data-ar="🚀 تطوير المراكز" data-en="🚀 Centre Development">🚀 Centre Development</a>
-    <a href="pages/feasibility.html" data-ar="📊 دراسة الجدوى" data-en="📊 Feasibility Study">📊 Feasibility Study</a>
-    <a href="pages/consulting.html" data-ar="💡 الاستشارات" data-en="💡 Consulting">💡 Consulting</a>
+<div id="mobileNav" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(5,0,16,.98);z-index:9998;flex-direction:column;padding:90px 1.5rem 2rem;overflow-y:auto">
+  <a href="index.html" style="color:#fff;text-decoration:none;font-size:1rem;font-weight:600;padding:.85rem 0;border-bottom:1px solid rgba(255,255,255,.07);display:block">🏠 Home</a>
+  <div style="font-size:.7rem;font-weight:700;color:#F5A623;text-transform:uppercase;letter-spacing:.1em;margin-top:1rem;margin-bottom:.2rem">Services</div>
+  <a href="pages/maintenance.html" style="color:rgba(200,180,255,.85);text-decoration:none;font-size:.9rem;padding:.6rem 0 .6rem 1rem;border-bottom:1px solid rgba(255,255,255,.04);display:block">🔧 Maintenance & Spare Parts</a>
+  <a href="pages/development.html" style="color:rgba(200,180,255,.85);text-decoration:none;font-size:.9rem;padding:.6rem 0 .6rem 1rem;border-bottom:1px solid rgba(255,255,255,.04);display:block">🚀 Centre Development</a>
+  <a href="pages/feasibility.html" style="color:rgba(200,180,255,.85);text-decoration:none;font-size:.9rem;padding:.6rem 0 .6rem 1rem;border-bottom:1px solid rgba(255,255,255,.04);display:block">📊 Feasibility Study</a>
+  <a href="pages/consulting.html" style="color:rgba(200,180,255,.85);text-decoration:none;font-size:.9rem;padding:.6rem 0 .6rem 1rem;border-bottom:1px solid rgba(255,255,255,.04);display:block">💡 Consulting</a>
+  <div style="font-size:.7rem;font-weight:700;color:#F5A623;text-transform:uppercase;letter-spacing:.1em;margin-top:1rem;margin-bottom:.2rem">Products</div>
+  <a href="pages/bowling.html" style="color:rgba(200,180,255,.85);text-decoration:none;font-size:.9rem;padding:.6rem 0 .6rem 1rem;border-bottom:1px solid rgba(255,255,255,.04);display:block">🎳 Bowling Centers</a>
+  <a href="pages/arcade-vr.html" style="color:rgba(200,180,255,.85);text-decoration:none;font-size:.9rem;padding:.6rem 0 .6rem 1rem;border-bottom:1px solid rgba(255,255,255,.04);display:block">🕹️ Arcade & VR</a>
+  <a href="pages/kids-play.html" style="color:rgba(200,180,255,.85);text-decoration:none;font-size:.9rem;padding:.6rem 0 .6rem 1rem;border-bottom:1px solid rgba(255,255,255,.04);display:block">🎠 Kids Play Areas</a>
+  <a href="pages/escape-rooms.html" style="color:rgba(200,180,255,.85);text-decoration:none;font-size:.9rem;padding:.6rem 0 .6rem 1rem;border-bottom:1px solid rgba(255,255,255,.04);display:block">🔐 Escape Rooms</a>
+  <a href="pages/private-palace.html" style="color:rgba(200,180,255,.85);text-decoration:none;font-size:.9rem;padding:.6rem 0 .6rem 1rem;border-bottom:1px solid rgba(255,255,255,.04);display:block">👑 Private Palace</a>
+  <a href="#projects" style="color:#fff;text-decoration:none;font-size:1rem;font-weight:600;padding:.85rem 0;border-bottom:1px solid rgba(255,255,255,.07);display:block">📁 Projects</a>
+  <a href="#about" style="color:#fff;text-decoration:none;font-size:1rem;font-weight:600;padding:.85rem 0;border-bottom:1px solid rgba(255,255,255,.07);display:block">ℹ️ About</a>
+  <a href="#contact" style="color:#fff;text-decoration:none;font-size:1rem;font-weight:600;padding:.85rem 0;border-bottom:1px solid rgba(255,255,255,.07);display:block">📞 Contact</a>
+  <a href="news.html" style="color:#fff;text-decoration:none;font-size:1rem;font-weight:600;padding:.85rem 0;border-bottom:1px solid rgba(255,255,255,.07);display:block">📰 News</a>
+  <div style="display:flex;gap:.5rem;margin-top:1rem">
+    <button onclick="setLang('ar');document.getElementById('mobileNav').style.display='none';document.body.style.overflow=''" style="background:transparent;border:1px solid rgba(245,166,35,.3);color:rgba(255,255,255,.7);padding:.4rem 1rem;border-radius:4px;font-size:.85rem;cursor:pointer;font-weight:600">عربي</button>
+    <button onclick="setLang('en');document.getElementById('mobileNav').style.display='none';document.body.style.overflow=''" style="background:#F5A623;border:1px solid #F5A623;color:#050010;padding:.4rem 1rem;border-radius:4px;font-size:.85rem;cursor:pointer;font-weight:700">EN</button>
   </div>
-
-  <span class="mobile-section-label" data-ar="المنتجات" data-en="Products">Products</span>
-  <div class="mobile-sub">
-    <a href="pages/bowling.html" data-ar="🎳 مراكز البولينج" data-en="🎳 Bowling Centers">🎳 Bowling Centers</a>
-    <a href="pages/arcade-vr.html" data-ar="🕹️ أركيد & VR" data-en="🕹️ Arcade & VR">🕹️ Arcade & VR</a>
-    <a href="pages/kids-play.html" data-ar="🎠 ألعاب الأطفال" data-en="🎠 Kids Play Areas">🎠 Kids Play Areas</a>
-    <a href="pages/escape-rooms.html" data-ar="🔐 غرف الهروب" data-en="🔐 Escape Rooms">🔐 Escape Rooms</a>
-    <a href="pages/private-palace.html" data-ar="👑 برايفت بالاس" data-en="👑 Private Palace">👑 Private Palace</a>
-  </div>
-
-  <a href="#projects" data-ar="📁 المشاريع" data-en="📁 Projects">📁 Projects</a>
-  <a href="#about" data-ar="ℹ️ من نحن" data-en="ℹ️ About">ℹ️ About</a>
-  <a href="#contact" data-ar="📞 تواصل معنا" data-en="📞 Contact">📞 Contact</a>
-  <a href="news.html" data-ar="📰 الأخبار" data-en="📰 News">📰 News</a>
-
-  <div class="mobile-lang">
-    <button onclick="setLang('ar');closeMobileMenu()" id="mobileBtnAR">عربي</button>
-    <button onclick="setLang('en');closeMobileMenu()" id="mobileBtnEN">EN</button>
-  </div>
-
-  <a href="#contact" class="mobile-cta" data-ar="📅 احجز مكالمة" data-en="📅 Book a Call">📅 Book a Call</a>
+  <a href="#contact" onclick="document.getElementById('mobileNav').style.display='none';document.body.style.overflow=''" style="display:block;margin-top:1rem;background:#F5A623;color:#050010;border-radius:8px;padding:.9rem 1.5rem;text-align:center;font-weight:700;text-decoration:none">📅 Book a Call</a>
 </div>
-
 
 <!-- News Ticker -->
 <a href="news.html" style="text-decoration:none;display:block">
@@ -482,44 +524,9 @@ html[dir="ltr"] .ticker-track:hover{animation-play-state:paused}
   0%{transform:translateX(-50%)}
   100%{transform:translateX(0)}
 }
-@media(max-width:600px){.ticker-label{font-size:.65rem;padding:0 .6rem}.ticker-item{font-size:.72rem;padding:0 1rem}}
+.ticker-item{font-size:.72rem;padding:0 1rem}}
 </style>
 
-<!-- NEWS TICKER -->
-<div class="news-ticker-wrap">
-  <div class="ticker-label" data-ar="📰 أخبار" data-en="📰 News">📰 أخبار</div>
-  <div class="ticker-track-outer">
-    <div class="ticker-track" id="tickerTrack">
-      <span class="ticker-item">
-        <a href="news/iaapa-expo-europe-2026.html" data-ar="🌍 DK Entertainment تشارك في معرض IAAPA Expo Europe 2026 في ExCeL لندن" data-en="🌍 DK Entertainment participates in IAAPA Expo Europe 2026 at ExCeL London">🌍 DK Entertainment تشارك في معرض IAAPA Expo Europe 2026 في ExCeL لندن</a>
-      </span>
-      <span class="ticker-sep">◆</span>
-      <span class="ticker-item">
-        <a href="news.html" data-ar="📋 تابع آخر أخبارنا ومستجداتنا في قسم الأخبار" data-en="📋 Stay updated with our latest news and updates">📋 تابع آخر أخبارنا ومستجداتنا في قسم الأخبار</a>
-      </span>
-      <span class="ticker-sep">◆</span>
-      <span class="ticker-item">
-        <a href="#contact" data-ar="📞 تواصل معنا للحصول على استشارة مجانية لمشروعك الترفيهي" data-en="📞 Contact us for a free consultation on your entertainment project">📞 تواصل معنا للحصول على استشارة مجانية لمشروعك الترفيهي</a>
-      </span>
-      <span class="ticker-sep">◆</span>
-    </div>
-  </div>
-  <button class="ticker-close" onclick="this.closest('.news-ticker-wrap').style.display='none'" aria-label="close">✕</button>
-</div>
-
-<style>
-.news-ticker-wrap{display:flex;align-items:center;background:#0d2540;border-bottom:1px solid rgba(200,168,75,.35);height:36px;overflow:hidden;position:relative;z-index:99}
-.ticker-label{background:var(--gold, #C8A84B);color:#0B1F3A;font-size:.7rem;font-weight:700;padding:0 .9rem;height:100%;display:flex;align-items:center;white-space:nowrap;flex-shrink:0}
-.ticker-track-outer{flex:1;overflow:hidden;height:100%;position:relative}
-.ticker-track{display:flex;align-items:center;gap:0;white-space:nowrap;animation:ticker-scroll 30s linear infinite;width:max-content}
-.ticker-track:hover{animation-play-state:paused}
-.ticker-item a{color:rgba(244,246,250,.85);text-decoration:none;font-size:.75rem;padding:0 1.5rem;transition:color .2s}
-.ticker-item a:hover{color:#C8A84B}
-.ticker-sep{color:rgba(200,168,75,.4);font-size:.6rem;padding:0 .25rem;flex-shrink:0}
-.ticker-close{background:transparent;border:none;color:rgba(244,246,250,.4);font-size:.7rem;cursor:pointer;padding:0 .75rem;height:100%;flex-shrink:0;transition:color .2s}
-.ticker-close:hover{color:#C8A84B}
-@keyframes ticker-scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-</style>
 
 <script>
 (function(){
@@ -975,6 +982,26 @@ html[dir="ltr"] .ticker-track:hover{animation-play-state:paused}
 </footer>
 
 <script>
+
+function toggleMobileMenu(){
+  var n=document.getElementById('mobileNav');
+  var b=document.getElementById('hamburgerBtn');
+  if(!n)return;
+  if(n.style.display==='flex'){
+    n.style.display='none';
+    document.body.style.overflow='';
+    if(b)b.classList.remove('open');
+  }else{
+    n.style.display='flex';
+    document.body.style.overflow='hidden';
+    if(b)b.classList.add('open');
+  }
+}
+function closeMobileMenu(){
+  var n=document.getElementById('mobileNav');
+  if(n)n.style.display='none';
+  document.body.style.overflow='';
+}
 function setLang(lang) {
   const isAr = lang === 'ar';
   document.getElementById('bodyEl').setAttribute('dir', isAr ? 'rtl' : 'ltr');
