@@ -280,27 +280,40 @@ footer{background:var(--darker);border-top:1px solid rgba(255,255,255,.06);paddi
       <div class="lang-toggle">
         <button class="lang-btn active" id="btnEN" onclick="setLang('en')">EN</button>
         <button class="lang-btn" id="btnAR" onclick="setLang('ar')">عربي</button>
-      </div>
-      <a href="../index.html#contact" class="nav-cta" data-en="Book a call" data-ar="احجز مكالمة">Book a call</a>
+      <button class="hamburger" id="hamburgerBtn" onclick="toggleMobileMenu()" aria-label="Menu"><span></span><span></span><span></span></button>
     </div>
-  <button class="hamburger" id="hamburgerBtn" onclick="toggleMobileMenu()" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
+      <a href="../index.html#contact" class="nav-cta" data-en="Book a call" data-ar="احجز مكالمة">Book a call</a>
+    <button class="hamburger" id="hamburgerBtn" onclick="toggleMobileMenu()" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
   </div>
 </nav>
 
 <!-- Mobile Menu -->
-<div class="mobile-nav" id="mobileNav">
-  <span class="mobile-section-label" data-ar="التنقل" data-en="Navigation">Navigation</span>
-  <a href="../index.html" data-ar="🏠 الرئيسية" data-en="🏠 Home">🏠 Home</a>
-
-  <span class="mobile-section-label" data-ar="الخدمات" data-en="Services">Services</span>
-  <div class="mobile-sub">
-    <a href="../pages/maintenance.html" data-ar="🔧 الصيانة وقطع الغيار" data-en="🔧 Maintenance & Spare Parts">🔧 Maintenance & Spare Parts</a>
-    <a href="../pages/development.html" data-ar="🚀 تطوير المراكز" data-en="🚀 Centre Development">🚀 Centre Development</a>
-    <a href="../pages/feasibility.html" data-ar="📊 دراسة الجدوى" data-en="📊 Feasibility Study">📊 Feasibility Study</a>
-    <a href="../pages/consulting.html" data-ar="💡 الاستشارات" data-en="💡 Consulting">💡 Consulting</a>
+<div id="mobileNav" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(5,0,16,.98);z-index:9998;flex-direction:column;padding:90px 1.5rem 2rem;overflow-y:auto;gap:0">
+  <a href="../index.html" style="color:#fff;text-decoration:none;font-size:1rem;font-weight:600;padding:.85rem 0;border-bottom:1px solid rgba(255,255,255,.07);display:block">🏠 Home / الرئيسية</a>
+  <div style="font-size:.7rem;font-weight:700;color:#F5A623;text-transform:uppercase;letter-spacing:.1em;margin-top:1rem;margin-bottom:.2rem">Services / الخدمات</div>
+  <a href="../pages/maintenance.html" style="color:rgba(200,180,255,.85);text-decoration:none;font-size:.9rem;padding:.6rem 0 .6rem 1rem;border-bottom:1px solid rgba(255,255,255,.04);display:block">🔧 Maintenance & Spare Parts</a>
+  <a href="../pages/development.html" style="color:rgba(200,180,255,.85);text-decoration:none;font-size:.9rem;padding:.6rem 0 .6rem 1rem;border-bottom:1px solid rgba(255,255,255,.04);display:block">🚀 Centre Development</a>
+  <a href="../pages/feasibility.html" style="color:rgba(200,180,255,.85);text-decoration:none;font-size:.9rem;padding:.6rem 0 .6rem 1rem;border-bottom:1px solid rgba(255,255,255,.04);display:block">📊 Feasibility Study</a>
+  <a href="../pages/consulting.html" style="color:rgba(200,180,255,.85);text-decoration:none;font-size:.9rem;padding:.6rem 0 .6rem 1rem;border-bottom:1px solid rgba(255,255,255,.04);display:block">💡 Consulting</a>
+  <div style="font-size:.7rem;font-weight:700;color:#F5A623;text-transform:uppercase;letter-spacing:.1em;margin-top:1rem;margin-bottom:.2rem">Products / المنتجات</div>
+  <a href="../pages/bowling.html" style="color:rgba(200,180,255,.85);text-decoration:none;font-size:.9rem;padding:.6rem 0 .6rem 1rem;border-bottom:1px solid rgba(255,255,255,.04);display:block">🎳 Bowling Centers</a>
+  <a href="../pages/arcade-vr.html" style="color:rgba(200,180,255,.85);text-decoration:none;font-size:.9rem;padding:.6rem 0 .6rem 1rem;border-bottom:1px solid rgba(255,255,255,.04);display:block">🕹️ Arcade & VR</a>
+  <a href="../pages/kids-play.html" style="color:rgba(200,180,255,.85);text-decoration:none;font-size:.9rem;padding:.6rem 0 .6rem 1rem;border-bottom:1px solid rgba(255,255,255,.04);display:block">🎠 Kids Play Areas</a>
+  <a href="../pages/escape-rooms.html" style="color:rgba(200,180,255,.85);text-decoration:none;font-size:.9rem;padding:.6rem 0 .6rem 1rem;border-bottom:1px solid rgba(255,255,255,.04);display:block">🔐 Escape Rooms</a>
+  <a href="../pages/private-palace.html" style="color:rgba(200,180,255,.85);text-decoration:none;font-size:.9rem;padding:.6rem 0 .6rem 1rem;border-bottom:1px solid rgba(255,255,255,.04);display:block">👑 Private Palace</a>
+  <a href="../index.html#projects" style="color:#fff;text-decoration:none;font-size:1rem;font-weight:600;padding:.85rem 0;border-bottom:1px solid rgba(255,255,255,.07);display:block">📁 Projects</a>
+  <a href="../index.html#about" style="color:#fff;text-decoration:none;font-size:1rem;font-weight:600;padding:.85rem 0;border-bottom:1px solid rgba(255,255,255,.07);display:block">ℹ️ About</a>
+  <a href="../index.html#contact" style="color:#fff;text-decoration:none;font-size:1rem;font-weight:600;padding:.85rem 0;border-bottom:1px solid rgba(255,255,255,.07);display:block">📞 Contact</a>
+  <a href="../news.html" style="color:#fff;text-decoration:none;font-size:1rem;font-weight:600;padding:.85rem 0;border-bottom:1px solid rgba(255,255,255,.07);display:block">📰 News</a>
+  <div style="display:flex;gap:.5rem;margin-top:1rem">
+    <button onclick="setLang('ar');document.getElementById('mobileNav').style.display='none';document.body.style.overflow=''" style="background:transparent;border:1px solid rgba(245,166,35,.3);color:rgba(255,255,255,.7);padding:.4rem 1rem;border-radius:4px;font-size:.85rem;cursor:pointer;font-weight:600">عربي</button>
+    <button onclick="setLang('en');document.getElementById('mobileNav').style.display='none';document.body.style.overflow=''" style="background:#F5A623;border:1px solid #F5A623;color:#050010;padding:.4rem 1rem;border-radius:4px;font-size:.85rem;cursor:pointer;font-weight:700">EN</button>
   </div>
+  <a href="../index.html#contact" onclick="document.getElementById('mobileNav').style.display='none';document.body.style.overflow=''" style="display:block;margin-top:1rem;background:#F5A623;color:#050010;border-radius:8px;padding:.9rem 1.5rem;text-align:center;font-weight:700;text-decoration:none">📅 Book a Call</a>
+</div>
+
+
 
   <span class="mobile-section-label" data-ar="المنتجات" data-en="Products">Products</span>
   <div class="mobile-sub">
