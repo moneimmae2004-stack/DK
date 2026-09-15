@@ -2,7 +2,6 @@
 <html lang="en" id="htmlRoot">
 <head>
 <meta charset="UTF-8"/>
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+CiAgPHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByeD0iMTIiIGZpbGw9IiMwNTAwMTAiLz4KICA8dGV4dCB4PSIyOCIgeT0iNDIiIGZvbnQtZmFtaWx5PSJBcmlhbCBCbGFjaywgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIzMiIgZm9udC13ZWlnaHQ9IjkwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0id2hpdGUiPkRLPC90ZXh0PgogIDxjaXJjbGUgY3g9IjU2IiBjeT0iNDIiIHI9IjUiIGZpbGw9IiNGNUE2MjMiLz4KPC9zdmc+"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
 <!-- Primary SEO -->
@@ -363,7 +362,31 @@ footer{background:var(--darker);border-top:1px solid rgba(255,255,255,.06);paddi
 .fbottom p{font-size:.82rem;color:var(--muted)}
 .fbottom span{font-size:.82rem;color:rgba(245,166,35,.6)}
 @media(max-width:900px){.services-grid{grid-template-columns:repeat(2,1fr)}.steps{grid-template-columns:repeat(3,1fr)}.contact-inner{grid-template-columns:1fr}.footer-inner{grid-template-columns:1fr 1fr;gap:2rem}}
-@media(max-width:600px){.nav-links{display:none}.services-grid{grid-template-columns:1fr}.steps{grid-template-columns:1fr 1fr}.hero-stats{gap:1.5rem}.frow{grid-template-columns:1fr}.footer-inner{grid-template-columns:1fr}.prime-banner{flex-direction:column;align-items:flex-start}.prime-banner img{width:100%;height:160px}}
+@media(max-width:600px){.services-grid{grid-template-columns:1fr}.steps{grid-template-columns:1fr 1fr}.hero-stats{gap:1.5rem}.frow{grid-template-columns:1fr}.footer-inner{grid-template-columns:1fr}.prime-banner{flex-direction:column;align-items:flex-start}.prime-banner img{width:100%;height:160px}}
+
+/* ===== MOBILE NAV ===== */
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:.4rem;background:none;border:none;z-index:9999;flex-shrink:0}
+.hamburger span{display:block;width:24px;height:2px;background:#F0EAFF;border-radius:2px;transition:all .3s}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+#mobileNav{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(5,0,16,.98);z-index:9998;flex-direction:column;padding:90px 1.5rem 2rem;overflow-y:auto}
+#mobileNav a{color:#fff;text-decoration:none;font-size:1rem;font-weight:600;padding:.85rem 0;border-bottom:1px solid rgba(255,255,255,.07);display:block}
+#mobileNav a:hover{color:#F5A623}
+.mob-label{font-size:.7rem;font-weight:700;color:#F5A623;text-transform:uppercase;letter-spacing:.1em;margin-top:1rem;margin-bottom:.2rem;display:block}
+.mob-sub a{padding:.6rem 0 .6rem 1rem!important;font-size:.9rem!important;color:rgba(200,180,255,.85)!important;border-bottom:1px solid rgba(255,255,255,.04)!important}
+.mob-lang{display:flex;gap:.5rem;margin-top:1rem}
+.mob-lang button{background:transparent;border:1px solid rgba(245,166,35,.3);color:rgba(255,255,255,.7);padding:.4rem 1rem;border-radius:4px;font-size:.85rem;cursor:pointer;font-weight:600}
+.mob-lang button.active{background:#F5A623;color:#050010;border-color:#F5A623;font-weight:700}
+.mob-cta{display:block;margin-top:1rem!important;background:#F5A623!important;color:#050010!important;border-radius:8px!important;padding:.9rem 1.5rem!important;text-align:center!important;font-weight:700!important;border-bottom:none!important}
+@media only screen and (max-width:768px){
+  .hamburger{display:flex!important}
+  .nav-links{display:none!important}
+  .nav-cta{display:none!important}
+  .nav-inner{justify-content:space-between!important}
+  .nav-right{gap:.5rem!important}
+  .logo{font-size:2rem!important}
+}
 </style>
 </head>
 <body dir="ltr" id="bodyEl">
@@ -372,23 +395,15 @@ footer{background:var(--darker);border-top:1px solid rgba(255,255,255,.06);paddi
   <div class="nav-inner">
     <div class="logo">DK<span>.</span></div>
     <ul class="nav-links">
-      <li class="nav-dropdown">
-        <a href="#services" data-en="Services ▾" data-ar="الخدمات ▾">Services ▾</a>
-        <ul class="dropdown-menu">
-          <li><a href="pages/maintenance.html" data-en="🔧 Maintenance & Spare Parts" data-ar="🔧 الصيانة وقطع الغيار">🔧 Maintenance & Spare Parts</a></li>
-          <li><a href="pages/development.html" data-en="🚀 Centre Development" data-ar="🚀 تطوير المراكز">🚀 Centre Development</a></li>
-          <li><a href="pages/feasibility.html" data-en="📊 Feasibility Study" data-ar="📊 دراسة الجدوى">📊 Feasibility Study</a></li>
-          <li><a href="pages/consulting.html" data-en="💡 Consulting" data-ar="💡 الاستشارات">💡 Consulting</a></li>
-        </ul>
-      </li>
+      <li><a href="#services" data-en="Services" data-ar="الخدمات">Services</a></li>
       <li class="nav-dropdown">
         <a href="#products" data-en="Products" data-ar="المنتجات">Products ▾</a>
         <ul class="dropdown-menu">
-          <li><a href="pages/bowling.html" data-en="🎳 Bowling Centers" data-ar="🎳 مراكز البولينج">🎳 Bowling Centers</a></li>
-          <li><a href="pages/arcade-vr.html" data-en="🕹️ Arcade & VR" data-ar="🕹️ أركيد & VR">🕹️ Arcade & VR</a></li>
-          <li><a href="pages/kids-play.html" data-en="🎠 Kids Play Areas" data-ar="🎠 ألعاب الأطفال">🎠 Kids Play Areas</a></li>
-          <li><a href="pages/escape-rooms.html" data-en="🔐 Escape Rooms" data-ar="🔐 غرف الهروب">🔐 Escape Rooms</a></li>
-          <li><a href="pages/private-palace.html" data-en="👑 Private Palace" data-ar="👑 برايفت بالاس">👑 Private Palace</a></li>
+          <li><a href="pages/bowling.html" data-en="🎳 Bowling Centers" data-ar="🎳 مراكز البولينج">🎳 مراكز البولينج</a></li>
+          <li><a href="pages/arcade-vr.html" data-en="🕹️ Arcade & VR" data-ar="🕹️ أركيد & VR">🕹️ أركيد & VR</a></li>
+          <li><a href="pages/kids-play.html" data-en="🎠 Kids Play Areas" data-ar="🎠 ألعاب الأطفال">🎠 ألعاب الأطفال</a></li>
+          <li><a href="pages/escape-rooms.html" data-en="🔐 Escape Rooms" data-ar="🔐 غرف الهروب">🔐 غرف الهروب</a></li>
+          <li><a href="pages/private-palace.html" data-en="👑 Private Palace" data-ar="👑 برايفت بالاس">👑 برايفت بالاس</a></li>
         </ul>
       </li>
       <li><a href="#projects" data-en="Projects" data-ar="المشاريع">Projects</a></li>
@@ -402,9 +417,43 @@ footer{background:var(--darker);border-top:1px solid rgba(255,255,255,.06);paddi
         <button class="lang-btn" id="btnAR" onclick="setLang('ar')">عربي</button>
       </div>
       <a href="#contact" class="nav-cta" data-en="Book a call" data-ar="احجز مكالمة">Book a call</a>
+      <button class="hamburger" id="hamburgerBtn" onclick="toggleMobileMenu()" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </div>
 </nav>
+
+<!-- Mobile Menu -->
+<div id="mobileNav">
+  <span class="mob-label">Navigation</span>
+  <a href="#services">🏠 Home</a>
+  <span class="mob-label">Services</span>
+  <div class="mob-sub">
+    <a href="pages/maintenance.html">🔧 Maintenance & Spare Parts</a>
+    <a href="pages/development.html">🚀 Centre Development</a>
+    <a href="pages/feasibility.html">📊 Feasibility Study</a>
+    <a href="pages/consulting.html">💡 Consulting</a>
+  </div>
+  <span class="mob-label">Products</span>
+  <div class="mob-sub">
+    <a href="pages/bowling.html">🎳 Bowling Centers</a>
+    <a href="pages/arcade-vr.html">🕹️ Arcade & VR</a>
+    <a href="pages/kids-play.html">🎠 Kids Play Areas</a>
+    <a href="pages/escape-rooms.html">🔐 Escape Rooms</a>
+    <a href="pages/private-palace.html">👑 Private Palace</a>
+  </div>
+  <a href="#projects">📁 Projects</a>
+  <a href="#about">ℹ️ About</a>
+  <a href="#contact">📞 Contact</a>
+  <a href="news.html">📰 News</a>
+  <div class="mob-lang">
+    <button onclick="setLang('ar');closeMob()" id="mobAR">عربي</button>
+    <button onclick="setLang('en');closeMob()" id="mobEN" class="active">EN</button>
+  </div>
+  <a href="#contact" class="mob-cta" onclick="closeMob()">📅 Book a Call</a>
+</div>
+
 
 <!-- News Ticker -->
 <a href="news.html" style="text-decoration:none;display:block">
@@ -937,6 +986,20 @@ html[dir="ltr"] .ticker-track:hover{animation-play-state:paused}
 </footer>
 
 <script>
+function toggleMobileMenu(){
+  var n=document.getElementById('mobileNav');
+  var b=document.getElementById('hamburgerBtn');
+  if(!n)return;
+  if(n.style.display==='flex'){n.style.display='none';document.body.style.overflow='';if(b)b.classList.remove('open');}
+  else{n.style.display='flex';document.body.style.overflow='hidden';if(b)b.classList.add('open');}
+}
+function closeMob(){
+  var n=document.getElementById('mobileNav');
+  var b=document.getElementById('hamburgerBtn');
+  if(n)n.style.display='none';
+  document.body.style.overflow='';
+  if(b)b.classList.remove('open');
+}
 function setLang(lang) {
   const isAr = lang === 'ar';
   document.getElementById('bodyEl').setAttribute('dir', isAr ? 'rtl' : 'ltr');
