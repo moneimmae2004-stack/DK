@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://dk-sa.com/sitemap.xml
+Sitemap: https://www.dk-sa.com/sitemap.xml
