@@ -3,6 +3,18 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
+<link rel="icon" href="/favicon.ico" sizes="any"/>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png"/>
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png"/>
+<link rel="apple-touch-icon" href="/favicon/apple-touch-icon.png"/>
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon/android-chrome-192x192.png"/>
+<style>
+.logo-img{height:2.1rem;width:auto;display:block}
+.logo,.nav-logo{display:flex;align-items:center}
+.footer-logo{display:flex;align-items:center;margin-bottom:.6rem}
+footer .logo-img{height:2.3rem}
+@media(max-width:480px){.logo-img{height:1.7rem}}
+</style>
 <title>تجهيز مراكز الترفيه المتكاملة وPrivate Palace في السعودية | DK Entertainment</title>
 <meta name="description" content="DK Entertainment Solutions — تصميم وتجهيز مراكز الترفيه الخاصة المتكاملة (Private Palace) في السعودية: بولينج + أركيد + VR + ألعاب أطفال تحت سقف واحد. مشاريع مسلّمة في الرياض وجدة."/>
 <link rel="canonical" href="https://www.dk-sa.com/pages/private-palace.html"/>
@@ -253,7 +265,31 @@ footer{background:var(--darker);border-top:1px solid rgba(255,255,255,.06);paddi
 .fbottom p{font-size:.82rem;color:var(--muted)}
 .fbottom span{font-size:.82rem;color:rgba(245,166,35,.6)}
 @media(max-width:900px){.services-grid{grid-template-columns:repeat(2,1fr)}.steps{grid-template-columns:repeat(3,1fr)}.contact-inner{grid-template-columns:1fr}.footer-inner{grid-template-columns:1fr 1fr;gap:2rem}}
-@media(max-width:600px){.nav-links{display:none}.services-grid{grid-template-columns:1fr}</style>
+@media(max-width:600px){.nav-links{display:none}.services-grid{grid-template-columns:1fr}}
+
+/* ===== MOBILE NAV ===== */
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:.4rem;background:none;border:none;z-index:9999;flex-shrink:0}
+.hamburger span{display:block;width:24px;height:2px;background:#F0EAFF;border-radius:2px;transition:all .3s}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+#mobileNav{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(5,0,16,.98);z-index:9998;flex-direction:column;padding:90px 1.5rem 2rem;overflow-y:auto}
+#mobileNav a{color:#fff;text-decoration:none;font-size:1rem;font-weight:600;padding:.85rem 0;border-bottom:1px solid rgba(255,255,255,.07);display:block}
+#mobileNav a:hover{color:#F5A623}
+.mob-label{font-size:.7rem;font-weight:700;color:#F5A623;text-transform:uppercase;letter-spacing:.1em;margin-top:1rem;margin-bottom:.2rem;display:block}
+.mob-sub a{padding:.6rem 0 .6rem 1rem!important;font-size:.9rem!important;color:rgba(200,180,255,.85)!important;border-bottom:1px solid rgba(255,255,255,.04)!important}
+.mob-lang{display:flex;gap:.5rem;margin-top:1rem}
+.mob-lang button{background:transparent;border:1px solid rgba(245,166,35,.3);color:rgba(255,255,255,.7);padding:.4rem 1rem;border-radius:4px;font-size:.85rem;cursor:pointer;font-weight:600}
+.mob-lang button.active{background:#F5A623;color:#050010;border-color:#F5A623;font-weight:700}
+.mob-cta{display:block;margin-top:1rem!important;background:#F5A623!important;color:#050010!important;border-radius:8px!important;padding:.9rem 1.5rem!important;text-align:center!important;font-weight:700!important;border-bottom:none!important}
+@media only screen and (max-width:768px){
+  .hamburger{display:flex!important}
+  .nav-links{display:none!important}
+  .nav-cta{display:none!important}
+  .nav-inner{justify-content:space-between!important}
+  .nav-right{gap:.5rem!important}
+}
+</style>
 </head>
 <body>
 
@@ -278,7 +314,7 @@ footer{background:var(--darker);border-top:1px solid rgba(255,255,255,.06);paddi
 
 <nav>
   <div class="nav-inner">
-    <a class="nav-logo" href="../index.html">DK<span>.</span></a>
+    <a class="nav-logo" href="../index.html"><img src="/images/dk-logo-mark-white.png" alt="DK Entertainment Solutions" class="logo-img"/></a>
     <ul class="nav-links">
       <li class="nav-dropdown">
         <a href="../index.html#services" data-en="Services" data-ar="الخدمات">Services ▾</a>
@@ -310,9 +346,41 @@ footer{background:var(--darker);border-top:1px solid rgba(255,255,255,.06);paddi
         <button class="lang-btn" id="btnAR" onclick="setLang('ar')">عربي</button>
       </div>
       <a href="../index.html#contact" class="nav-cta" data-en="Book a call" data-ar="احجز مكالمة">Book a call</a>
+      <button class="hamburger" id="hamburgerBtn" onclick="toggleMobileMenu()" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </div>
 </nav>
+
+<div id="mobileNav">
+  <span class="mob-label" data-en="Navigation" data-ar="التنقل">Navigation</span>
+  <a href="../index.html" data-en="🏠 Home" data-ar="🏠 الرئيسية">🏠 Home</a>
+  <span class="mob-label" data-en="Services" data-ar="الخدمات">Services</span>
+  <div class="mob-sub">
+    <a href="../pages/maintenance.html" data-en="🔧 Maintenance & Spare Parts" data-ar="🔧 الصيانة وقطع الغيار">🔧 Maintenance & Spare Parts</a>
+    <a href="../pages/development.html" data-en="🚀 Centre Development" data-ar="🚀 تطوير المراكز">🚀 Centre Development</a>
+    <a href="../pages/feasibility.html" data-en="📊 Feasibility Study" data-ar="📊 دراسة الجدوى">📊 Feasibility Study</a>
+    <a href="../pages/consulting.html" data-en="💡 Consulting" data-ar="💡 الاستشارات">💡 Consulting</a>
+  </div>
+  <span class="mob-label" data-en="Products" data-ar="المنتجات">Products</span>
+  <div class="mob-sub">
+    <a href="../pages/bowling.html" data-en="🎳 Bowling Centers" data-ar="🎳 مراكز البولينج">🎳 Bowling Centers</a>
+    <a href="../pages/arcade-vr.html" data-en="🕹️ Arcade & VR" data-ar="🕹️ أركيد & VR">🕹️ Arcade & VR</a>
+    <a href="../pages/kids-play.html" data-en="🎠 Kids Play Areas" data-ar="🎠 ألعاب الأطفال">🎠 Kids Play Areas</a>
+    <a href="../pages/escape-rooms.html" data-en="🔐 Escape Rooms" data-ar="🔐 غرف الهروب">🔐 Escape Rooms</a>
+    <a href="../pages/private-palace.html" data-en="👑 Private Palace" data-ar="👑 برايفت بالاس">👑 Private Palace</a>
+  </div>
+  <a href="../index.html#projects" data-en="📁 Projects" data-ar="📁 المشاريع">📁 Projects</a>
+  <a href="../index.html#about" data-en="ℹ️ About" data-ar="ℹ️ من نحن">ℹ️ About</a>
+  <a href="../index.html#contact" data-en="📞 Contact" data-ar="📞 تواصل معنا">📞 Contact</a>
+  <a href="../news.html" data-en="📰 News" data-ar="📰 الأخبار">📰 News</a>
+  <div class="mob-lang">
+    <button onclick="setLang('ar');closeMob()" id="mobAR">عربي</button>
+    <button onclick="setLang('en');closeMob()" id="mobEN" class="active">EN</button>
+  </div>
+  <a href="../index.html#contact" class="mob-cta" onclick="closeMob()" data-en="📅 Book a Call" data-ar="📅 احجز مكالمة">📅 Book a Call</a>
+</div>
 
 <div class="breadcrumb">
   <a href="../index.html" data-ar="الرئيسية" data-en="Home">الرئيسية</a> ←
@@ -468,6 +536,21 @@ footer{background:var(--darker);border-top:1px solid rgba(255,255,255,.06);paddi
 </footer>
 
 <script>
+
+function toggleMobileMenu(){
+  var n=document.getElementById('mobileNav');
+  var b=document.getElementById('hamburgerBtn');
+  if(!n)return;
+  if(n.style.display==='flex'){n.style.display='none';document.body.style.overflow='';if(b)b.classList.remove('open');}
+  else{n.style.display='flex';document.body.style.overflow='hidden';if(b)b.classList.add('open');}
+}
+function closeMob(){
+  var n=document.getElementById('mobileNav');
+  var b=document.getElementById('hamburgerBtn');
+  if(n)n.style.display='none';
+  document.body.style.overflow='';
+  if(b)b.classList.remove('open');
+}
 function setLang(l){
   const html=document.getElementById('htmlRoot');
   html.setAttribute('lang',l);
